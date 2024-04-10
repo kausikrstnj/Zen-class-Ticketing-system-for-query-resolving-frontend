@@ -77,7 +77,6 @@ function Home() {
         const timeTo = document.getElementById('avalTo').value;
         const [hoursFrom, minutesFrom] = timeFrom.split(':');
         const [hoursTo, minutesTo] = timeTo.split(':');
-        console.log('createQuery/postImg-- ', postImg)
         currentDate.setHours(parseInt(hoursFrom, 10), parseInt(minutesFrom, 10), 0, 0);
         const query = {
             category: document.getElementById('category').value,
@@ -87,13 +86,12 @@ function Home() {
             desc: document.getElementById('queryDesc').value,
             timeFrom: currentDate.toISOString(),
             timeTo: currentDate.toISOString(),
-            // attachment: document.getElementById('attachment').value, 
             attachment: postImg,
             userId: userId,
             status: "pending",
             assignedTo: "",
         };
-        fetch('http://localhost:3000/api/createQuery', {
+        fetch('https://6616c10c5bca5513cfabc2ab--cool-nougat-2525df.netlify.app/api/createQuery', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -135,11 +133,6 @@ function Home() {
                 }
             });
     };
-
-
-
-
-
     const updateSubcategoryOptions = () => {
         const selectedCategory = document.getElementById('category').value;
         let options;
@@ -162,8 +155,6 @@ function Home() {
         }
         setSubcategoryOptions(options);
     };
-
-    // Call updateSubcategoryOptions when the component mounts
     useEffect(() => {
         updateSubcategoryOptions();
     }, []);
@@ -188,7 +179,6 @@ function Home() {
         <>
 
             <div className="home">
-                {/* sidebar */}
                 <div className="d-flex flex-column flex-shrink-1 p-2 text-bg-dark" id='sidebar'>
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
@@ -235,7 +225,6 @@ function Home() {
 
                 <div className="container text-center" id='createquery'>
                     <button type="button" className="btn btn-warning" onClick={back}>Back</button>
-
                     <div className="row" id='createquerydet'>
                         <form className="form d-flex justify-content-center flex-column mt-2">
                             <h2 className="fw-bold text-body-emphasis form-title">Topic</h2>
