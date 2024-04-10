@@ -1,0 +1,358 @@
+import React from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import './Home.css'
+import Filebase64 from 'react-file-base64'
+
+function MyQueries() {
+    const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem('jwt') ? true : false;
+    const role = localStorage.getItem('role');
+
+    const userId = localStorage.getItem('userId');
+    const [queries, setQueries] = useState([]);
+    const [recentQuery, setRecentQuery] = useState(null);
+    const [phn, setPhn] = useState([]);
+
+    const [imgSrc, setImgSrc] = useState('');
+    const [postImg, setPostImg] = useState({});
+
+    const handleLoadImage = () => {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const imageSrc = event.target.result;
+            setImgSrc(imageSrc); // Set the image source in state
+        };
+        let mimeType;
+        if (recentQuery.attachment.endsWith('.png')) {
+            mimeType = 'image/png';
+        } else if (recentQuery.attachment.endsWith('.jpg') || recentQuery.attachment.endsWith('.jpeg')) {
+            mimeType = 'image/jpeg';
+        } else if (recentQuery.attachment.endsWith('.gif')) {
+            mimeType = 'image/gif';
+        } else {
+            // Default to PNG if the format is not recognized
+            mimeType = 'image/png';
+        }
+        // Convert the file path to Blob object
+        const blob = new Blob([recentQuery.attachment], { type: mimeType });
+        // Read the file as a data URL (base64 string)
+        reader.readAsDataURL(blob);
+    };
+
+    useEffect(() => {
+        if (!localStorage.getItem('jwt')) {
+            navigate('/IntroPage');
+        }
+    }, [navigate]);
+
+    const createQuery = () => {
+        navigate('/CreateQuery');
+    }
+
+    useEffect(() => {
+        getQueries();
+    }, []);
+
+    //To get queries from DB
+    const getQueries = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/queries/${userId}/${role}`);
+            const data = await response.json();
+            setQueries(data.queries);
+            setRecentQuery(data.recentQuery);
+        } catch (error) {
+            console.error('Error fetching queries:', error);
+        }
+    };
+    function getStatusStyle(status) {
+        let color, backgroundColor;
+        switch (status) {
+            case 'closed':
+                color = 'white';
+                backgroundColor = 'green';
+                break;
+            case 'assigned':
+                color = 'white';
+                backgroundColor = 'blue';
+                break;
+            case 'pending':
+                color = 'white';
+                backgroundColor = 'red';
+                break;
+            default:
+                color = 'black';
+                backgroundColor = 'white';
+        }
+        return { color, backgroundColor };
+    }
+    async function fetchDataAndNavigate(queryId) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/query/${queryId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch query data');
+            }
+            const data = await response.json();
+            const queryData = data.query;
+            navigate(`/query/${queryData._id}`, { state: { queryData } });
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    const handleAssignClick = async (queryId) => {
+        navigate(`/assign/${queryId}`);
+    };
+    const handleCloseModal = () => {
+        setSelectedQuery(null);
+    };
+
+    //To close query by mentor
+    const closeQuery = async (queryId) => {
+        fetch(`http://localhost:3000/api/closeQuery/${queryId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ queryId: queryId })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                alert(data.message);
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('There was a problem closing query', error);
+            });
+
+    };
+
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedTime = `${hours % 12 || 12}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
+        return `${formattedDate}, ${formattedTime}`;
+    };
+    const formattedDate = formatDate('2024-03-23T11:50:54.034Z');
+    return (
+        < >
+            <div className="home">
+                {/* sidebar */}
+                <div className="d-flex flex-column flex-shrink-1 p-2 text-bg-dark" id='sidebar'>
+                    <ul className="nav nav-pills flex-column mb-auto">
+                        <li className="nav-item">
+                            <a href="/" className="nav-link text-white">
+                                <span className="text">📊Dashboard</span>
+                            </a>
+                        </li>
+                        <hr />
+                        {role === 'student' ? (
+                            <li>
+                                <a href={`/CreateQuery/${userId}`} className="nav-link text-white" onClick={createQuery}>
+                                    <span className="icon"><i className="bi bi-plus-square-fill"></i></span> {/* Example icon */}
+                                    <span className="text">➕Create Query</span>
+                                </a>
+                                <hr />
+                            </li>
+                        ) : (
+                            <></>
+                        )}
+                        {role == 'admin' ? (
+                            <li>
+                                <Link to={`/queries/${userId}`} className="nav-link text-white">
+                                    <span className="icon">📂All Queries</span>
+                                </Link>
+                                <hr />
+                            </li>
+
+                        ) : (
+                            <li>
+                                <Link to={`/queries/${userId}`} className="nav-link text-white">
+                                    <span className="icon">📂My Queries</span>
+                                </Link>
+                                <hr />
+                            </li>
+                        )}
+
+                        {role === 'admin' ? (<li>
+                            <a href={'/assignedQueries'} className="nav-link text-white">
+                                <span className="icon">📦</span>
+                                <span className="text">Queries Assigned</span>
+                            </a>
+                            <hr />
+                        </li>
+
+                        ) : (
+                            <></>
+                        )}
+
+                    </ul>
+                </div>
+
+
+
+                <div className="container text-center" id='myQueriesContainer'>
+
+                    {queries.length === 0 ? (
+                        <div className='card' id='myQueriesCard1'>
+                            <p className="text-body-secondary">No Queries to display.</p>
+                        </div>
+                    ) : (
+                        queries.map(query => (
+                            <div className='card' id='myQueriesCard1'>
+                                <button onClick={() => fetchDataAndNavigate(query._id)} key={query._id} id='myQueryButton'>
+                                    <div className='card-my-query' key={query._id}>
+                                        <div id='card1row'>
+                                            <span id='myQueriesCard1QT'>QN{query.queryNumber} - {query.title}
+                                                <div id='card1status' style={getStatusStyle(query.status)}>{query.status}</div>
+                                            </span>
+
+                                        </div>
+                                        <br />
+                                        <div className='row' id='placementcreated' >
+                                            <span id='categoryDet'> {query.category}</span>
+                                            <span id='created'> {formatDate(query.created)}</span>
+                                        </div>
+                                        {role === 'mentor' && (
+                                            <>
+                                                <br />
+                                                < span id='userPhn'> Phn - {query.userPhn}</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </button >
+                                {role === 'admin' && (
+                                    <div>
+                                        {query.status == 'assigned' ? (
+                                            <button key={`assign_${query._id}`} className="btn btn-secondary">
+                                                Assigned
+                                            </button>
+                                        ) : (
+                                            query.status == 'closed' ? (
+                                                <>
+                                                    < button key={`assign_${query._id}`} className="btn btn-success" >
+                                                        Closed
+                                                    </button>
+                                                    <br />
+                                                </>
+                                            ) : (
+                                                <>
+                                                    < button onClick={() => handleAssignClick(query._id)} key={`assign_${query._id}`} className="btn btn-primary">
+                                                        Assign
+                                                    </button>
+                                                    <br />
+                                                </>
+                                            )
+
+
+                                        )}
+
+
+                                    </div>
+                                )}
+                                {role === 'mentor' && (
+                                    query.status === 'closed' ? (
+                                        <div>
+                                            <button key={`assign_${query._id}`} className="btn btn-success" >
+                                                Closed
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <button onClick={() => closeQuery(query._id)} key={`assign_${query._id}`} className="btn btn-danger" >
+                                                Close Query
+                                            </button>
+                                        </div>
+                                    )
+                                )}
+
+                            </div>
+                        )
+                        )
+                    )}
+
+
+                </div >
+                <div className="container text-center" id='myQueriesContainer2'>
+                    {recentQuery && (
+                        <div className='card' id='myQueriesCard2'>
+                            <div id='recentQuery'>
+                                <span >Recent Query</span>
+                            </div>
+                            <div id='recentQueryHeader'>
+                                <span>QN{recentQuery.queryNumber} - {recentQuery.title}</span>
+                                <span id='status' style={getStatusStyle(recentQuery.status)}>{recentQuery.status}</span>
+
+                            </div>
+                            <hr />
+
+                            <div className='row' >
+                                <div id='detrow'>
+                                    <span className="text-body-secondary" id='createdAt'> Created at:</span>
+                                    <span className="text-body-secondary" id='createdAt'> Assigned to:</span>
+
+                                </div>
+
+                                <div id='detrow'>
+                                    <span>{formatDate(recentQuery.created)}</span>
+                                    <span>{recentQuery.mentorName} </span>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div id='desc'>
+                                <span className="text-body-secondary">Description:</span>
+                            </div>
+                            <div id='desc'>
+                                <span>{recentQuery.desc}</span>
+                            </div>
+                            <br />
+                            <div className="attachment-container" >
+                                <p className="text-body-secondary" >Attachment:</p>
+                                <br />
+                                {recentQuery.attachment === '' ? (
+                                    <>
+                                    </>
+                                ) : (
+                                    <div id='imagePreview' style={{ paddingLeft: '10px' }}>
+                                        <br />
+                                        {recentQuery.attachment && (
+
+                                            <img
+                                                src={recentQuery.attachment}
+                                                style={{ height: '100px', width: '100px' }}
+                                                onLoad={handleLoadImage}
+                                                alt="Attachment"
+                                            />
+
+
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+
+                            <div id='goToQuery'>
+                                <a href={`/query/${recentQuery._id}`} className="btn btn-primary">Go to query</a>
+                            </div>
+                        </div>
+                    )}
+                </div >
+
+            </div >
+
+
+        </>
+    )
+}
+
+export default MyQueries

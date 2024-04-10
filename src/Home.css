@@ -1,0 +1,434 @@
+#zenclass {
+    font-size: large;
+}
+
+#sidebar {
+    position: static;
+    width: 180px;
+    background-color: #333;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #555;
+}
+
+.btn-primary {
+    margin: 10px;
+}
+
+.home {
+    display: flex;
+    height: 91vh;
+}
+
+#homeContainer {
+    flex: 1;
+    padding-left: 10px;
+    background-image: url('./assets/dash.jpg');
+}
+
+#myquery {
+    color: darkgray;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#footer {
+    text-align: center;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#tiles {
+    justify-content: center;
+    padding-left: 90px;
+    padding-top: 50px;
+    padding-right: 50px;
+    background-image: url('./assets/dash.jpg');
+}
+
+
+
+/* Dashboard-tile */
+#tileCardRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+#tileCard {
+    flex: 1;
+    max-width: calc(25% - 5px);
+    height: 300px;
+    background-color: transparent;
+    color: white;
+    margin-right: 10px;
+    justify-content: center;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+}
+
+#tileCard:last-child {
+    margin-right: 0;
+}
+
+/* ----------------- */
+#createQueryCard {
+    height: auto;
+}
+
+#createquery {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.form {
+    background-color: #fff;
+    padding: 1rem;
+    max-width: 350px;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin: auto;
+}
+
+.form-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    text-align: start;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container input,
+.form button {
+    outline: none;
+    border: 1px solid #e5e7eb;
+    margin: 8px 0;
+
+}
+
+.input-container input {
+    background-color: #fff;
+    padding: 1rem;
+    padding-right: 3rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 300px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.input-container span {
+    display: grid;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    place-content: center;
+}
+
+.input-container span svg {
+    color: #9CA3AF;
+    width: 1rem;
+    height: 1rem;
+}
+
+.input-container select {
+    background-color: #fff;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 300px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit {
+    display: block;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: #4F46E5;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    width: 100%;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+}
+
+.signup-link {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+
+.signup-link a {
+    text-decoration: underline;
+}
+
+#submitBtn {
+    padding: 10px;
+    align-self: flex-end;
+
+    display: inline;
+}
+
+#myQueriesCard1 {
+    min-width: 100px;
+    /* min-height: 96px; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 8px;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+    padding: 7px;
+}
+
+
+
+#myQueriesCard2 {
+    background: #fff;
+    border: 1px solid #dedede;
+    box-sizing: border-box;
+    border-radius: 16px;
+    min-height: 87vh;
+    padding: 10px;
+    overflow-y: scroll;
+    padding: 16px 25px;
+}
+
+
+
+#backButton {
+    display: flex;
+    flex-direction: row;
+    display: inline-block;
+}
+
+#recentQuery {
+    display: flex;
+    justify-content: center;
+    color: #4b0dba;
+    min-height: 95%;
+}
+
+#recentQueryHeader {
+    display: flex;
+    padding: 24px 0 28px;
+    justify-content: space-between;
+}
+
+#detrow {
+    display: flex;
+    justify-content: space-between;
+}
+
+#desc {
+    display: flex;
+}
+
+#goToQuery {
+    display: flex;
+    justify-content: center;
+}
+
+/* chatbox css */
+.chat-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-history {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 8px;
+    clear: both;
+    word-wrap: break-word;
+}
+
+.from-student {
+    background-color: #DCF8C6;
+    float: right;
+}
+
+.from-mentor {
+    background-color: #E5E5EA;
+    float: left;
+}
+
+#myQueriesContainer {
+    width: 80%;
+    height: 95%;
+    overflow-y: scroll;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    gap: 16px;
+    padding: 16px 20px;
+    scrollbar-width: thin;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#chatBoxContainer {
+
+    height: 100%;
+    overflow-y: scroll;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    gap: 16px;
+    padding: 16px 20px;
+    scrollbar-width: thin;
+}
+
+#addUser {
+    display: flex;
+    justify-content: space-between;
+}
+
+#ViewQueryParent {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+#createquerydet {
+    padding-left: 100px;
+}
+
+
+#myQueriesCard1QT {
+    display: flex;
+    justify-content: space-between;
+}
+
+#card1status {
+    text-align: right;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#myQueryButton {
+    min-width: 100px;
+    border: none;
+    margin: none;
+}
+
+.UserProfilecontainer {
+    padding: 20px;
+    font-family: sans-serif;
+    border: #000 solid 1px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#status {
+    border-radius: 3px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.card-my-query {
+    margin: none;
+    padding: 3px;
+}
+
+#myQueriesContainer2 {
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#categoryDet {
+    border: 2px solid #c5a0eb;
+    color: #c5a0eb;
+    border-radius: 10px;
+}
+
+#created {
+    text-align: right;
+}
+
+#categoryDet {
+    text-align: left;
+}
+
+#placementcreated {
+    display: inline-block;
+    justify-content: space-between;
+}
+
+.attachment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.attachment-container p {
+    margin: 0;
+}
+
+.attachment-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+#previewImg {
+
+    border-radius: 10px;
+    border: 2px solid grey;
+}
+
+#viewQueryContainer2 {
+    display: flex;
+    padding: 16px 20px;
+    overflow-y: auto;
+    font-size: medium;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#viewQueriesCard {
+    overflow-y: scroll;
+    display: flex;
+    padding: 16px 20px;
+    scrollbar-width: thin;
+    height: 500px;
+}
