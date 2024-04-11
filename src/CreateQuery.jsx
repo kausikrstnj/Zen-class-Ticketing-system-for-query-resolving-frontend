@@ -91,7 +91,7 @@ function Home() {
             status: "pending",
             assignedTo: "",
         };
-        fetch('http://localhost:3000/api/createQuery', {
+        fetch('https://zenclass-ticketing-system-for-query.onrender.com/api/createQuery', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
