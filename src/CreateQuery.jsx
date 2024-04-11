@@ -91,7 +91,7 @@ function Home() {
             status: "pending",
             assignedTo: "",
         };
-        fetch('https://6616c10c5bca5513cfabc2ab--cool-nougat-2525df.netlify.app/api/createQuery', {
+        fetch('http://localhost:3000/api/createQuery', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
