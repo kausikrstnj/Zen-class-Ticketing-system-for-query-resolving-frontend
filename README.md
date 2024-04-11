@@ -1,5 +1,13 @@
 ﻿# Zen-class-Ticketing-system-for-query-resolving-frontend
 
+## Logins:
+Created a admin login to check:
+- Email: admin@gmail.com
+- Password: admin@123
+
+## Using Emailjs:
+While user signup , forgot password or raise a query they will receive mail with related content.
+
 ## Dependencies
 
 This project utilizes the following dependencies:
