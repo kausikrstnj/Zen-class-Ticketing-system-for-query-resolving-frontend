@@ -44,17 +44,17 @@ function AssignedQueries() {
                 <div className="d-flex flex-column flex-shrink-1 p-2 text-bg-dark" id='sidebar'>
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
-                            <a href="/" className="nav-link text-white">
+                            <Link to={`/`} className="nav-link text-white">
                                 <span className="text">📊Dashboard</span>
-                            </a>
+                            </Link>
                         </li>
                         <hr />
                         {role === 'student' ? (
                             <li>
-                                <a href={`/CreateQuery/${userId}`} className="nav-link text-white" onClick={createQuery}>
+                                <Link to={`/CreateQuery/${userId}`} className="nav-link text-white" onClick={createQuery}>
                                     <span className="icon"><i className="bi bi-plus-square-fill"></i></span> {/* Example icon */}
                                     <span className="text">➕Create Query</span>
-                                </a>
+                                </Link>
                                 <hr />
                             </li>
                         ) : (
@@ -78,10 +78,10 @@ function AssignedQueries() {
                         )}
 
                         {role === 'admin' ? (<li>
-                            <a href={'/assignedQueries'} className="nav-link text-white">
+                            <Link to={'/assignedQueries'} className="nav-link text-white">
                                 <span className="icon">📦</span>
                                 <span className="text">Queries Assigned</span>
-                            </a>
+                            </Link>
                             <hr />
                         </li>
 

@@ -36,7 +36,6 @@ function Signin() {
                     const jwtString = localStorage.getItem('jwt');
                     const jwt = JSON.parse(jwtString);
                     localStorage.setItem('role', jwt.role);
-                    console.log('Role==== ', jwt.role);
                     if (jwt.msg == 'Email or password is incorrect.') {
                         alert('Email or password is incorrect.');
                     } else {
@@ -69,7 +68,7 @@ function Signin() {
                                 <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
                                 <label htmlFor="floatingPassword">Password</label>
                                 <br />
-                                <a className="forgot-password-link link" href="/forgotPassword" >Forgot Password</a>
+                                <Link className="forgot-password-link link" to={`/forgotPassword`} >Forgot Password</Link>
                             </div>
                             <br />
                             <Button variant="primary" onClick={clickSubmit}>Sign in</Button>

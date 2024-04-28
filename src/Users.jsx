@@ -53,7 +53,7 @@ function Users() {
         <div className="container mt-5">
             <div id='addUser'>
                 <h6 className="mb-4">All Users</h6>
-                <a type="button" className="btn btn-primary" href={`/addUser`}>+Add User</a>
+                <Link type="button" className="btn btn-primary" to={`/addUser`}>+Add User</Link>
             </div>
 
 

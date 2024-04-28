@@ -96,11 +96,8 @@ function Signup() {
                         </div>
                         <p className="signup-link">
                             Already have an account?
-                            <a className="signup-link link" href="/signin"> Sign in</a>
+                            <Link className="signup-link link" to={`/signin`}> Sign in</Link>
                         </p>
-                        {/* <div className="modal-footer">
-                            <p className="text-center mb-0">Already have an account? <a href="/signin">Sign in</a></p>
-                        </div> */}
                     </div>
                 </div>
             </div>

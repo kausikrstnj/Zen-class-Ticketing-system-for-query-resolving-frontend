@@ -74,8 +74,8 @@ function Profile() {
                                 </div>
                                 {role === 'mentor' || role === 'student' ? (
                                     <>
-                                        <a type="submit" className="form-submit-btn" href={`/user/edit/${userId}`}>Edit Account</a>
-                                        <a type="submit" className="form-submit-btn" onClick={() => deleteAccount(user._id)}>Delete Account</a>
+                                        <Link type="submit" className="form-submit-btn" to={`/user/edit/${userId}`}>Edit Account</Link>
+                                        <button type="submit" className="form-submit-btn" onClick={() => deleteAccount(user._id)}>Delete Account</button>
                                     </>
 
                                 ) : (
