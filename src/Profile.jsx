@@ -17,7 +17,7 @@ function Profile() {
 
     const fetchUserData = async (userId) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/users/profile/${userId}`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/profile/${userId}`);
             const userData = await response.json();
             setUserData(userData);
         } catch (error) {
@@ -26,7 +26,7 @@ function Profile() {
     };
     const deleteAccount = (userId) => {
 
-        fetch(`http://localhost:3000/api/users/${userId}`, {
+        fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,6 @@ function Profile() {
                 if (data.error) {
                     console.log('Error deleting account');
                 } else {
-                    console.log('Account deleted successfully');
                     alert('Account has been deleted!');
                     navigate('/users');
                 }

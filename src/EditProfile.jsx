@@ -15,7 +15,7 @@ function EditProfile() {
             email: document.getElementById('email').value,
             phn: document.getElementById('phn').value,
         }
-        fetch(`http://localhost:3000/api/users/${userId}`, {
+        fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

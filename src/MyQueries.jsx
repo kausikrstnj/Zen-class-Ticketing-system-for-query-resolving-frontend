@@ -32,7 +32,6 @@ function MyQueries() {
         } else if (recentQuery.attachment.endsWith('.gif')) {
             mimeType = 'image/gif';
         } else {
-            // Default to PNG if the format is not recognized
             mimeType = 'image/png';
         }
         // Convert the file path to Blob object
@@ -58,7 +57,7 @@ function MyQueries() {
     //To get queries from DB
     const getQueries = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/queries/${userId}/${role}`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
             const data = await response.json();
             setQueries(data.queries);
             setRecentQuery(data.recentQuery);
@@ -89,7 +88,7 @@ function MyQueries() {
     }
     async function fetchDataAndNavigate(queryId) {
         try {
-            const response = await fetch(`http://localhost:3000/api/query/${queryId}`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/query/${queryId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch query data');
             }
@@ -109,7 +108,7 @@ function MyQueries() {
 
     //To close query by mentor
     const closeQuery = async (queryId) => {
-        fetch(`http://localhost:3000/api/closeQuery/${queryId}`, {
+        fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/closeQuery/${queryId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

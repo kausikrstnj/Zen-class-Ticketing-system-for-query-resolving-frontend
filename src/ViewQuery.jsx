@@ -6,7 +6,6 @@ import './Home.css'
 
 
 function ViewQuery() {
-
     const navigate = useNavigate();
     const location = useLocation();
     const isAuthenticated = localStorage.getItem('jwt') ? true : false;
@@ -14,10 +13,6 @@ function ViewQuery() {
     const userId = localStorage.getItem('userId');
     const role = localStorage.getItem('role');
     const [queries, setQueries] = useState([]);
-
-
-    console.log('Query Data/ -- ', queryData)
-
     useEffect(() => {
         if (!localStorage.getItem('jwt')) {
             navigate('/IntroPage');
@@ -38,9 +33,7 @@ function ViewQuery() {
         return `${formattedDate}, ${formattedTime}`;
     };
     const formattedDate = formatDate('2024-03-23T11:50:54.034Z');
-
     const [imgSrc, setImgSrc] = useState('');
-
     const handleLoadImage = () => {
         // Create a new FileReader object
         const reader = new FileReader();

@@ -54,7 +54,7 @@ function AddUser() {
         };
         console.log('SignUp/user - ', user);
 
-        fetch('http://localhost:3000/api/users', {
+        fetch('https://zenclass-ticketing-system-for-query.onrender.com/api/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

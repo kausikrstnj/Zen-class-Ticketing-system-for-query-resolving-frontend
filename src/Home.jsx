@@ -77,7 +77,7 @@ function Home() {
 
     const getQueries = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/queries/${userId}/${role}`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
             const data = await response.json();
             setQueries(data.queries);
             setTotalQueries(data.totalQuery);

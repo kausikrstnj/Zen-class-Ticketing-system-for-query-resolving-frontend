@@ -15,9 +15,6 @@ function Assign() {
     const role = localStorage.getItem('role');
     const navigate = useNavigate();
     const [mentor, setMentor] = useState([]);
-
-
-    console.log('Assign//queryId=========', queryId)
     useEffect(() => {
         getMentors();
         if (!localStorage.getItem('jwt')) {
@@ -27,7 +24,7 @@ function Assign() {
 
     const getMentors = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/mentors');
+            const response = await axios.get('https://zenclass-ticketing-system-for-query.onrender.com/api/mentors');
             const data = response.data;
             console.log('Mentors data:', data);
             setMentor(data.Mentors);
@@ -42,7 +39,7 @@ function Assign() {
         const mentorId = event.target.value; // Extract the value from the button clicked
         console.log('MentorId:', mentorId);
 
-        fetch(`http://localhost:3000/api/assignMentor/${mentorId}/${queryId}`, {
+        fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/assignMentor/${mentorId}/${queryId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

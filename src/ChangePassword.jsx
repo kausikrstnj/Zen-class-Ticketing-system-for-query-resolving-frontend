@@ -10,8 +10,6 @@ function ChangePassword() {
 
     const checkPassword = async () => {
         event.preventDefault();
-        console.log(' checkPassword -----------------');
-
         const password1 = form.current.elements.password1.value;
         const password2 = form.current.elements.password2.value;
 
@@ -24,12 +22,10 @@ function ChangePassword() {
     }
 
     const updatePassword = async (e) => {
-        console.log(' updatePassword-----------------');
-
         const user = {
             password: document.getElementById('password1').value,
         };
-        await fetch(`http://localhost:3000/api/changePassword/${userId}`, {
+        await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/changePassword/${userId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

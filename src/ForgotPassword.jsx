@@ -23,7 +23,7 @@ function ForgotPassword() {
             mailId: document.getElementById('email').value,
         };
         try {
-            const response = await fetch(`http://localhost:3000/api/resetToken`, {
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/resetToken`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

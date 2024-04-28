@@ -8,13 +8,10 @@ function OTP() {
     const { userId } = useParams();
     const isAuthenticated = localStorage.getItem('jwt') ? true : false;
     const [error, setError] = useState('');
-
     useEffect(() => {
     },);
-
     const verifyEmail = async () => {
         event.preventDefault();
-
         const input1Value = document.getElementById('input1').value;
         const input2Value = document.getElementById('input2').value;
         const input3Value = document.getElementById('input3').value;
@@ -24,21 +21,17 @@ function OTP() {
         }
 
         try {
-            const response = await axios.post(`http://localhost:3000/api/verifyEmail/${userId}`, data, {
+            const response = await axios.post(`https://zenclass-ticketing-system-for-query.onrender.com/api/verifyEmail/${userId}`, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
             const result = await JSON.stringify(response);
-            console.log('Result-- ', result);
             navigate(`/changePassword/${userId}`);
-
         } catch (error) {
             setError('Enter valid code');
             //  console.error('Error fetching otp:', error);
         }
-
-
     }
 
     return (

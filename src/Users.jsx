@@ -35,10 +35,7 @@ function Users() {
     }, []);
 
     const handleAddUserClick = () => {
-        console.log('handleAddUserClick called');
         const popupWindow = window.open('/addUser', 'Add User', 'width=600,height=400');
-
-        // Check if the popup window was successfully opened
         if (!popupWindow || popupWindow.closed || typeof popupWindow.closed === 'undefined') {
             alert('Please allow pop-ups for this website to add a user.');
         }

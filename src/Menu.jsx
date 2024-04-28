@@ -8,17 +8,12 @@ function Menu() {
     const navigate = useNavigate();
     const isAuthenticated = localStorage.getItem('jwt') ? true : false;
     const role = localStorage.getItem('role');
-    console.log('role- ', role);
     const signout = () => {
         localStorage.removeItem('jwt');
         navigate('/IntroPage');
     }
-
     const userId = localStorage.getItem('userId');
-    console.log('userId- ', userId);
-
     const [dropdownOpen, setDropdownOpen] = useState(false);
-
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     }

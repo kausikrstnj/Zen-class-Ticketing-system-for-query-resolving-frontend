@@ -19,7 +19,7 @@ function AssignedQueries() {
     //To get queries from DB
     const getAllAssignedQueries = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/getAllAssignedQueries`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/getAllAssignedQueries`);
             const data = await response.json();
             setQueries(data.query);
         } catch (error) {
