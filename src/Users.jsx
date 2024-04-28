@@ -8,7 +8,7 @@ function Users() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/users', {
+                const response = await fetch('https://zenclass-ticketing-system-for-query.onrender.com/api/users', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('jwt')).token}`,
