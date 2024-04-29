@@ -36,7 +36,7 @@ function EditProfile() {
                 if (data.error) {
                     console.log('Error editing account');
                 } else {
-                    alert(data.message);
+                    alert('Profile successfully updated! Please login again to continue.');
                     navigate('/IntroPage');
                 }
             });
