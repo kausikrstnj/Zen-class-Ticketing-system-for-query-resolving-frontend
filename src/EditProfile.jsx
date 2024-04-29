@@ -9,12 +9,22 @@ function EditProfile() {
     const [userData, setUserData] = useState('');
     const { userId } = useParams();
 
-    const editAccount = (userId) => {
-        const data = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phn: document.getElementById('phn').value,
+    const editAccount = async (userId) => {
+        event.preventDefault();
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phn');
+        if (nameInput.value === '' || emailInput.value === '' || phoneInput.value === '') {
+            alert('Please fill in all fields.');
+            return;
         }
+
+        // Data to be sent in the request
+        const data = {
+            name: nameInput.value,
+            email: emailInput.value,
+            phn: phoneInput.value,
+        };
         fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/${userId}`, {
             method: 'PUT',
             headers: {
@@ -27,7 +37,7 @@ function EditProfile() {
                     console.log('Error editing account');
                 } else {
                     alert(data.message);
-                    // navigate('/IntroPage');
+                    navigate('/IntroPage');
                 }
             });
     };

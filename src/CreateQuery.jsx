@@ -119,7 +119,16 @@ function Home() {
                         }).then(
                             (response) => {
                                 alert('Your query has been raised.');
-                                window.location.reload();
+                                document.getElementById('category').value = '';
+                                document.getElementById('subcategorySelect').value = '';
+                                document.getElementById('language').value = '';
+                                document.getElementById('queryTitle').value = '';
+                                document.getElementById('queryDesc').value = '';
+                                document.getElementById('avalFrom').value = '';
+                                document.getElementById('avalTo').value = '';
+                                document.getElementById('attachment').value = '';
+                                document.getElementById('previewImg').src = '';
+                                navigate(`/queries/:userId`);
                                 console.log('SUCCESS!', response.status, response.text);
                             },
                             (error) => {

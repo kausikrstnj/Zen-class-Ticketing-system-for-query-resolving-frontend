@@ -124,7 +124,8 @@ function MyQueries() {
             .then(data => {
                 console.log(data);
                 alert(data.message);
-                window.location.reload();
+                getQueries();
+                //  window.location.reload();
             })
             .catch(error => {
                 console.error('There was a problem closing query', error);
