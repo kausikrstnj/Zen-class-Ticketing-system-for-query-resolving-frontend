@@ -37,7 +37,13 @@ function Profile() {
                     console.log('Error deleting account');
                 } else {
                     alert('Account has been deleted!');
-                    navigate('/');
+
+                    if (role === 'student' || role === 'mentor') {
+                        navigate('/IntroPage');
+                    } else {
+                        navigate('/users');
+                    }
+
                 }
             });
     };
