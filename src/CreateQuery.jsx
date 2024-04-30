@@ -11,7 +11,7 @@ function Home() {
     const isAuthenticated = localStorage.getItem('jwt') ? true : false;
     const [subcategoryOptions, setSubcategoryOptions] = useState([]);
     const [img, setImg] = useState();
-    const [postImg, setPostImg] = useState({});
+    const [postImg, setPostImg] = useState('');
 
     const userId = localStorage.getItem('userId');
     const role = localStorage.getItem('role');
