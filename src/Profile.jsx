@@ -40,7 +40,7 @@ function Profile() {
 
                     if (role === 'student' || role === 'mentor') {
                         localStorage.removeItem('jwt');
-                        navigate('/IntroPage');
+                        navigate('/signup');
                     } else {
                         navigate('/users');
                     }
