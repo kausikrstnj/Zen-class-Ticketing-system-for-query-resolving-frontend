@@ -18,7 +18,7 @@ function Menu() {
         setDropdownOpen(!dropdownOpen);
     }
     const handleItemClick = () => {
-        setDropdownOpen(false); // Close the dropdown menu when an item is clicked
+        setDropdownOpen(false);
     };
 
     return (

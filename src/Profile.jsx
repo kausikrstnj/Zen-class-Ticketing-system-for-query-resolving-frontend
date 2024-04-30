@@ -39,6 +39,7 @@ function Profile() {
                     alert('Account has been deleted!');
 
                     if (role === 'student' || role === 'mentor') {
+                        localStorage.removeItem('jwt');
                         navigate('/IntroPage');
                     } else {
                         navigate('/users');
