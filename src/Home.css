@@ -500,3 +500,9 @@
         transform: rotate(360deg);
     }
 }
+
+#myQueriesFilter {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}

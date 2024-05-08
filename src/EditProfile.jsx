@@ -45,7 +45,7 @@ function EditProfile() {
 
     return (
         <div id='editProfile'>
-            <div class="loader" id="loader"></div>
+
             <div className="form-container">
                 <div className="logo-container">
                     Edit your profile
@@ -67,8 +67,6 @@ function EditProfile() {
 
                     <button type="submit" className="form-submit-btn" onClick={() => editAccount(userId)}>Save changes</button>
                 </form>
-
-
             </div>
         </div >
     )

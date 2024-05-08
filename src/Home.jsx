@@ -144,97 +144,103 @@ function Home() {
                     </ul>
                 </div>
 
-                <div className="container text-center" id='tiles'>
-                    <h3>Dashboard</h3>
-                    <hr />
-                    <div className="row" id='tileCardRow' style={{ backgroundColor: 'white' }}>
-                        {role == 'student' || 'admin' ? (
-                            <div className="card" id='tileCard'>
-                                <h5>Total Queries</h5>
-                                <Bar
-                                    data={totalQuerieschartData}
-                                    options={{
-                                        plugins: {
-                                            title: {
-                                                display: true,
-
-                                            },
-                                            legend: {
-                                                display: false
-                                            }
-                                        }
-                                    }}
-                                />
-                            </div>
-                        ) : (
-                            <></>
-                        )}
-
-                        {role == 'mentor' ? (
-                            <></>
-                        ) : (
-                            <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                                <h5 >Pending Queries</h5>
-                                <Bar
-                                    data={pendingQuerieschartData}
-                                    options={{
-                                        plugins: {
-                                            title: {
-                                                display: true,
-
-                                            },
-                                            legend: {
-                                                display: false
-                                            }
-                                        }
-                                    }}
-                                />
-                            </div>
-                        )}
-
-                        <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                            <h5>Resolved Queries</h5>
-                            <Bar
-                                data={resolvedQuerieschartData}
-                                options={{
-                                    plugins: {
-                                        title: {
-                                            display: true,
-
-                                        },
-                                        legend: {
-                                            display: false
-                                        }
-                                    }
-                                }}
-                            />
-                        </div>
-
-                        {role === 'mentor' ? (
-                            <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                                <h5> Assigned to me</h5>
-                                <Bar
-                                    data={assignedQuerieschartData}
-                                    options={{
-                                        plugins: {
-                                            title: {
-                                                display: true,
-
-                                            },
-                                            legend: {
-                                                display: false
-                                            }
-                                        }
-                                    }}
-                                />
-                            </div>
-                        ) : (
-                            <></>
-                        )}
-
+                {totalQueries.length === 0 && pendingQueries.length === 0 && assignedQueries.length === 0 && resolvedQueries.length === 0 ? (
+                    <div id='editProfile'>
+                        <div class="loader"></div>
                     </div>
-                    <hr />
-                </div>
+
+                ) : (
+                    <div className="container text-center" id='tiles'>
+                        <h3>Dashboard</h3>
+                        <hr />
+                        <div className="row" id='tileCardRow' style={{ backgroundColor: 'white' }}>
+                            {role == 'student' || 'admin' ? (
+                                <div className="card" id='tileCard'>
+                                    <h5>Total Queries</h5>
+                                    <Bar
+                                        data={totalQuerieschartData}
+                                        options={{
+                                            plugins: {
+                                                title: {
+                                                    display: true,
+
+                                                },
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+
+                            {role == 'mentor' ? (
+                                <></>
+                            ) : (
+                                <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
+                                    <h5 >Pending Queries</h5>
+                                    <Bar
+                                        data={pendingQuerieschartData}
+                                        options={{
+                                            plugins: {
+                                                title: {
+                                                    display: true,
+
+                                                },
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            )}
+
+                            <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
+                                <h5>Resolved Queries</h5>
+                                <Bar
+                                    data={resolvedQuerieschartData}
+                                    options={{
+                                        plugins: {
+                                            title: {
+                                                display: true,
+
+                                            },
+                                            legend: {
+                                                display: false
+                                            }
+                                        }
+                                    }}
+                                />
+                            </div>
+
+                            {role === 'mentor' ? (
+                                <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
+                                    <h5> Assigned to me</h5>
+                                    <Bar
+                                        data={assignedQuerieschartData}
+                                        options={{
+                                            plugins: {
+                                                title: {
+                                                    display: true,
+
+                                                },
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+
+                        </div>
+                        <hr />
+                    </div>)}
             </div>
         </>
     );

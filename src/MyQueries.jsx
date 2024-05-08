@@ -73,6 +73,7 @@ function MyQueries() {
             const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
             const data = await response.json();
             setQueries(data.queries);
+            setRecentQuery(data.recentQuery);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching queries:', error);
@@ -226,71 +227,74 @@ function MyQueries() {
                         </div>
                     ) : (
                         queries.map(query => (
-                            <div className='card' id='myQueriesCard1' key={query._id}>
-                                <button onClick={() => fetchDataAndNavigate(query._id)} key={query._id} id='myQueryButton'>
-                                    <div className='card-my-query' key={query._id}>
-                                        <div id='card1row'>
-                                            <span id='myQueriesCard1QT'>QN{query.queryNumber} - {query.title}
-                                                <div id='card1status' style={getStatusStyle(query.status)}>{query.status}</div>
-                                            </span>
-                                        </div>
-                                        <br />
-                                        <div className='row' id='placementcreated'>
-                                            <span id='categoryDet'> {query.category}</span>
-                                            <span id='created'> {formatDate(query.created)}</span>
-                                        </div>
-                                        {role === 'mentor' && (
-                                            <>
-                                                <br />
-                                                <span id='userPhn'> Phn - {query.userPhn}</span>
-                                            </>
-                                        )}
-                                    </div>
-                                </button>
-                                {role === 'admin' && (
-                                    <div>
-                                        {query.status === 'assigned' ? (
-                                            <button key={`assign_${query._id}`} className="btn btn-secondary">
-                                                Assigned
-                                            </button>
-                                        ) : (
-                                            query.status === 'closed' ? (
+                            <>
+
+                                <div className='card' id='myQueriesCard1' key={query._id}>
+                                    <button onClick={() => fetchDataAndNavigate(query._id)} key={query._id} id='myQueryButton'>
+                                        <div className='card-my-query' key={query._id}>
+                                            <div id='card1row'>
+                                                <span id='myQueriesCard1QT'>QN{query.queryNumber} - {query.title}
+                                                    <div id='card1status' style={getStatusStyle(query.status)}>{query.status}</div>
+                                                </span>
+                                            </div>
+                                            <br />
+                                            <div className='row' id='placementcreated'>
+                                                <span id='categoryDet'> {query.category}</span>
+                                                <span id='created'> {formatDate(query.created)}</span>
+                                            </div>
+                                            {role === 'mentor' && (
                                                 <>
-                                                    <button key={`assign_${query._id}`} className="btn btn-success">
-                                                        Closed
-                                                    </button>
                                                     <br />
+                                                    <span id='userPhn'> Phn - {query.userPhn}</span>
                                                 </>
+                                            )}
+                                        </div>
+                                    </button>
+                                    {role === 'admin' && (
+                                        <div>
+                                            {query.status === 'assigned' ? (
+                                                <button key={`assign_${query._id}`} className="btn btn-secondary">
+                                                    Assigned
+                                                </button>
                                             ) : (
-                                                <>
-                                                    <button onClick={() => handleAssignClick(query._id)} key={`assign_${query._id}`} className="btn btn-primary">
-                                                        Assign
-                                                    </button>
-                                                    <br />
-                                                </>
-                                            )
-                                        )}
-                                    </div>
-                                )}
-                                {role === 'mentor' && (
-                                    query.status === 'closed' ? (
-                                        <div>
-                                            <button key={`assign_${query._id}`} className="btn btn-success">
-                                                Closed
-                                            </button>
+                                                query.status === 'closed' ? (
+                                                    <>
+                                                        <button key={`assign_${query._id}`} className="btn btn-success">
+                                                            Closed
+                                                        </button>
+                                                        <br />
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <button onClick={() => handleAssignClick(query._id)} key={`assign_${query._id}`} className="btn btn-primary">
+                                                            Assign
+                                                        </button>
+                                                        <br />
+                                                    </>
+                                                )
+                                            )}
                                         </div>
-                                    ) : (
-                                        <div>
-                                            <button onClick={() => closeQuery(query._id)} key={`assign_${query._id}`} className="btn btn-danger">
-                                                Close Query
-                                            </button>
-                                        </div>
-                                    )
-                                )}
-                            </div>
+                                    )}
+                                    {role === 'mentor' && (
+                                        query.status === 'closed' ? (
+                                            <div>
+                                                <button key={`assign_${query._id}`} className="btn btn-success">
+                                                    Closed
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <button onClick={() => closeQuery(query._id)} key={`assign_${query._id}`} className="btn btn-danger">
+                                                    Close Query
+                                                </button>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </>
                         ))
                     )}
-                </div>
+                </div >
 
                 <div className="container text-center" id='myQueriesContainer2'>
                     {loading ? (
