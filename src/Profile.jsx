@@ -52,7 +52,9 @@ function Profile() {
     return (
         <div>
             {userData.length === 0 ? (
-                <p>Loading user data...</p>
+                <div id='editProfile'>
+                    <div class="loader"></div>
+                </div>
 
             ) : (
                 userData.map(user => (

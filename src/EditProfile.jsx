@@ -18,7 +18,7 @@ function EditProfile() {
             alert('Please fill in all fields.');
             return;
         }
-
+        document.getElementById('loader').style.display = 'block';
         // Data to be sent in the request
         const data = {
             name: nameInput.value,
@@ -33,6 +33,7 @@ function EditProfile() {
             body: JSON.stringify(data),
         }).then(response => response.json())
             .then(data => {
+                document.getElementById('loader').style.display = 'none';
                 if (data.error) {
                     console.log('Error editing account');
                 } else {
@@ -44,6 +45,7 @@ function EditProfile() {
 
     return (
         <div id='editProfile'>
+            <div class="loader" id="loader"></div>
             <div className="form-container">
                 <div className="logo-container">
                     Edit your profile

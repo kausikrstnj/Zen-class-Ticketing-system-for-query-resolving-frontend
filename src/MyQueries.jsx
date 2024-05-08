@@ -14,6 +14,8 @@ function MyQueries() {
     const [queries, setQueries] = useState([]);
     const [recentQuery, setRecentQuery] = useState(null);
     const [phn, setPhn] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const [imgSrc, setImgSrc] = useState('');
     const [postImg, setPostImg] = useState({});
@@ -55,16 +57,30 @@ function MyQueries() {
     }, []);
 
     //To get queries from DB
+    // const getQueries = async () => {
+    //     try {
+    //         const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
+    //         const data = await response.json();
+    //         setQueries(data.queries);
+    //         setRecentQuery(data.recentQuery);
+    //     } catch (error) {
+    //         console.error('Error fetching queries:', error);
+    //     }
+    // };
+
     const getQueries = async () => {
         try {
             const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
             const data = await response.json();
             setQueries(data.queries);
-            setRecentQuery(data.recentQuery);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching queries:', error);
+            setError(error);
+            setLoading(false);
         }
     };
+
     function getStatusStyle(status) {
         let color, backgroundColor;
         switch (status) {
@@ -147,7 +163,6 @@ function MyQueries() {
     return (
         < >
             <div className="home">
-                {/* sidebar */}
                 <div className="d-flex flex-column flex-shrink-1 p-2 text-bg-dark" id='sidebar'>
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
@@ -199,116 +214,110 @@ function MyQueries() {
                     </ul>
                 </div>
 
-
-
                 <div className="container text-center" id='myQueriesContainer'>
-
-                    {queries.length === 0 ? (
+                    {loading ? (
+                        <div className="loadercard">
+                            <div className="loader_card__skeleton loader_card__title"></div>
+                            <div className="loader_card__skeleton loader_card__description"></div>
+                        </div>
+                    ) : queries.length === 0 ? (
                         <div className='card' id='myQueriesCard1'>
                             <p className="text-body-secondary">No Queries to display.</p>
                         </div>
                     ) : (
                         queries.map(query => (
-                            <div className='card' id='myQueriesCard1'>
+                            <div className='card' id='myQueriesCard1' key={query._id}>
                                 <button onClick={() => fetchDataAndNavigate(query._id)} key={query._id} id='myQueryButton'>
                                     <div className='card-my-query' key={query._id}>
                                         <div id='card1row'>
                                             <span id='myQueriesCard1QT'>QN{query.queryNumber} - {query.title}
                                                 <div id='card1status' style={getStatusStyle(query.status)}>{query.status}</div>
                                             </span>
-
                                         </div>
                                         <br />
-                                        <div className='row' id='placementcreated' >
+                                        <div className='row' id='placementcreated'>
                                             <span id='categoryDet'> {query.category}</span>
                                             <span id='created'> {formatDate(query.created)}</span>
                                         </div>
                                         {role === 'mentor' && (
                                             <>
                                                 <br />
-                                                < span id='userPhn'> Phn - {query.userPhn}</span>
+                                                <span id='userPhn'> Phn - {query.userPhn}</span>
                                             </>
                                         )}
                                     </div>
-                                </button >
+                                </button>
                                 {role === 'admin' && (
                                     <div>
-                                        {query.status == 'assigned' ? (
+                                        {query.status === 'assigned' ? (
                                             <button key={`assign_${query._id}`} className="btn btn-secondary">
                                                 Assigned
                                             </button>
                                         ) : (
-                                            query.status == 'closed' ? (
+                                            query.status === 'closed' ? (
                                                 <>
-                                                    < button key={`assign_${query._id}`} className="btn btn-success" >
+                                                    <button key={`assign_${query._id}`} className="btn btn-success">
                                                         Closed
                                                     </button>
                                                     <br />
                                                 </>
                                             ) : (
                                                 <>
-                                                    < button onClick={() => handleAssignClick(query._id)} key={`assign_${query._id}`} className="btn btn-primary">
+                                                    <button onClick={() => handleAssignClick(query._id)} key={`assign_${query._id}`} className="btn btn-primary">
                                                         Assign
                                                     </button>
                                                     <br />
                                                 </>
                                             )
-
-
                                         )}
-
-
                                     </div>
                                 )}
                                 {role === 'mentor' && (
                                     query.status === 'closed' ? (
                                         <div>
-                                            <button key={`assign_${query._id}`} className="btn btn-success" >
+                                            <button key={`assign_${query._id}`} className="btn btn-success">
                                                 Closed
                                             </button>
                                         </div>
                                     ) : (
                                         <div>
-                                            <button onClick={() => closeQuery(query._id)} key={`assign_${query._id}`} className="btn btn-danger" >
+                                            <button onClick={() => closeQuery(query._id)} key={`assign_${query._id}`} className="btn btn-danger">
                                                 Close Query
                                             </button>
                                         </div>
                                     )
                                 )}
-
                             </div>
-                        )
-                        )
+                        ))
                     )}
+                </div>
 
-
-                </div >
                 <div className="container text-center" id='myQueriesContainer2'>
-                    {recentQuery && (
+                    {loading ? (
+                        <div className="loadercard" style={{ justifyContent: 'center' }}>
+                            <div className="loader_card__skeleton loader_card__title"></div>
+                            <div className="loader_card__skeleton loader_card__description"></div>
+                        </div>
+                    ) : recentQuery ? (
                         <div className='card' id='myQueriesCard2'>
                             <div id='recentQuery'>
-                                <span >Recent Query</span>
+                                <span>Recent Query</span>
                             </div>
                             <div id='recentQueryHeader'>
                                 <span>QN{recentQuery.queryNumber} - {recentQuery.title}</span>
                                 <span id='status' style={getStatusStyle(recentQuery.status)}>{recentQuery.status}</span>
-
                             </div>
                             <hr />
-
-                            <div className='row' >
+                            <div className='row'>
                                 <div id='detrow'>
                                     <span className="text-body-secondary" id='createdAt'> Created at:</span>
                                     <span className="text-body-secondary" id='createdAt'> Assigned to:</span>
-
                                 </div>
-
                                 <div id='detrow'>
                                     <span>{formatDate(recentQuery.created)}</span>
                                     <span>{recentQuery.mentorName} </span>
                                 </div>
                             </div>
-
                             <br />
                             <div id='desc'>
                                 <span className="text-body-secondary">Description:</span>
@@ -317,8 +326,8 @@ function MyQueries() {
                                 <span>{recentQuery.desc}</span>
                             </div>
                             <br />
-                            <div className="attachment-container" >
-                                <p className="text-body-secondary" >Attachment:</p>
+                            <div className="attachment-container">
+                                <p className="text-body-secondary">Attachment:</p>
                                 <br />
                                 {recentQuery.attachment === '' ? (
                                     <>
@@ -327,30 +336,27 @@ function MyQueries() {
                                     <div id='imagePreview' style={{ paddingLeft: '10px' }}>
                                         <br />
                                         {recentQuery.attachment && (
-
                                             <img
                                                 src={recentQuery.attachment}
                                                 style={{ height: '100px', width: '100px' }}
                                                 onLoad={handleLoadImage}
                                                 alt="Attachment"
                                             />
-
-
                                         )}
                                     </div>
                                 )}
                             </div>
-
                             <div id='goToQuery'>
                                 <Link to={`/query/${recentQuery._id}`} className="btn btn-primary">Go to query</Link>
                             </div>
                         </div>
+                    ) : (
+                        <div className='card' id='myQueriesCard2'>
+                            <p className="text-body-secondary">No recent query.</p>
+                        </div>
                     )}
-                </div >
-
+                </div>
             </div >
-
-
         </>
     )
 }

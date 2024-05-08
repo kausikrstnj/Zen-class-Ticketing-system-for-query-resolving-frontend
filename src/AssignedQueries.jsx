@@ -10,20 +10,25 @@ function AssignedQueries() {
     const role = localStorage.getItem('role');
     const userId = localStorage.getItem('userId');
     const [queries, setQueries] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
 
     useEffect(() => {
         getAllAssignedQueries();
     }, []);
 
-    //To get queries from DB
+    // To get queries from DB
     const getAllAssignedQueries = async () => {
         try {
             const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/getAllAssignedQueries`);
             const data = await response.json();
             setQueries(data.query);
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching queries:', error);
+            setError(error);
+            setLoading(false);
         }
     };
 
@@ -96,37 +101,37 @@ function AssignedQueries() {
 
                 <div className="container text-center" id='myQueriesContainer'>
                     <h3>Assigned Queries</h3>
-
-                    {queries.length === 0 ? (
+                    {loading ? (
+                        <div className="loadercard">
+                            <div className="loader_card__skeleton loader_card__title"></div>
+                            <div className="loader_card__skeleton loader_card__description"></div>
+                        </div>
+                    ) : error ? (
+                        <p>Error: {error.message}</p>
+                    ) : queries.length === 0 ? (
                         <div className='card' id='myQueriesCard1'>
                             <p className="text-body-secondary">No Queries to display.</p>
                         </div>
                     ) : (
                         queries.map(query => (
-                            <div className='card' id='myQueriesCard1'>
-
-                                <div className='card-my-query' key={query._id}>
+                            <div className='card' id='myQueriesCard1' key={query._id}>
+                                <div className='card-my-query'>
                                     <div id='card1row'>
                                         <span id='myQueriesCard1QT'>QN{query.queryNumber} - {query.title}
-                                            <div id='card1status' >Assigned To:{query.mentorName}</div>
+                                            <div id='card1status' >Assigned To: {query.mentorName}</div>
                                         </span>
-
                                     </div>
                                     <br />
-                                    <div className='row' id='placementcreated' >
-                                        <span id='categoryDet'> {query.category}</span>
-                                        <span id='created'> {formatDate(query.created)}</span>
-                                        < span id='userPhn'> Phn - {query.userPhn}</span>
+                                    <div className='row' id='placementcreated'>
+                                        <span id='categoryDet'>{query.category}</span>
+                                        <span id='created'>{formatDate(query.created)}</span>
+                                        <span id='userPhn'>Phn - {query.userPhn}</span>
                                     </div>
-
                                 </div>
-
-
                             </div>
-                        )
-                        )
+                        ))
                     )}
-                </div >
+                </div>
             </div >
         </>
     )
