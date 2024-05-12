@@ -19,6 +19,8 @@ function MyQueries() {
 
     const [imgSrc, setImgSrc] = useState('');
     const [postImg, setPostImg] = useState({});
+    const [filteredQueries, setFilteredQueries] = useState([]);
+    const [filterCriteria, setFilterCriteria] = useState('');
 
     const handleLoadImage = () => {
         const reader = new FileReader();
@@ -56,17 +58,26 @@ function MyQueries() {
         getQueries();
     }, []);
 
-    //To get queries from DB
-    // const getQueries = async () => {
-    //     try {
-    //         const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
-    //         const data = await response.json();
-    //         setQueries(data.queries);
-    //         setRecentQuery(data.recentQuery);
-    //     } catch (error) {
-    //         console.error('Error fetching queries:', error);
-    //     }
-    // };
+    const applyFilter = async (filterCriteria) => {
+        setLoading(true);
+        try {
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}?filter=${filterCriteria}`);
+            const data = await response.json();
+            setQueries(data.queries);
+            setRecentQuery(data.recentQuery);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching queries:', error);
+            setError(error);
+            setLoading(false);
+        }
+    };
+
+    // Call this function whenever filter criteria change
+    const handleFilterChange = (filterCriteria) => {
+        applyFilter(filterCriteria);
+    };
+
 
     const getQueries = async () => {
         try {
@@ -216,6 +227,20 @@ function MyQueries() {
                 </div>
 
                 <div className="container text-center" id='myQueriesContainer'>
+                    <form className="myQueriesFilterform">
+                        <button onClick={handleFilterChange}>
+                            <svg width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <input className="input" placeholder="Search" required="" type="text" />
+                        <button className="reset" type="reset">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </form>
+
                     {loading ? (
                         <div className="loadercard">
                             <div className="loader_card__skeleton loader_card__title"></div>
@@ -228,7 +253,6 @@ function MyQueries() {
                     ) : (
                         queries.map(query => (
                             <>
-
                                 <div className='card' id='myQueriesCard1' key={query._id}>
                                     <button onClick={() => fetchDataAndNavigate(query._id)} key={query._id} id='myQueryButton'>
                                         <div className='card-my-query' key={query._id}>
@@ -298,9 +322,10 @@ function MyQueries() {
 
                 <div className="container text-center" id='myQueriesContainer2'>
                     {loading ? (
-                        <div className="loadercard" style={{ justifyContent: 'center' }}>
-                            <div className="loader_card__skeleton loader_card__title"></div>
-                            <div className="loader_card__skeleton loader_card__description"></div>
+                        <div className='card' id='myQueriesCard2'>
+                            <div id='editProfile'>
+                                <div class="loader"></div>
+                            </div>
                         </div>
                     ) : recentQuery ? (
                         <div className='card' id='myQueriesCard2'>
@@ -359,6 +384,7 @@ function MyQueries() {
                             <p className="text-body-secondary">No recent query.</p>
                         </div>
                     )}
+
                 </div>
             </div >
         </>

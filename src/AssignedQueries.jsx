@@ -102,9 +102,8 @@ function AssignedQueries() {
                 <div className="container text-center" id='myQueriesContainer'>
                     <h3>Assigned Queries</h3>
                     {loading ? (
-                        <div className="loadercard">
-                            <div className="loader_card__skeleton loader_card__title"></div>
-                            <div className="loader_card__skeleton loader_card__description"></div>
+                        <div className="assignedQueriesloadercard">
+                            <div className="assignedQueries_loader_card__skeleton assignedQueries_loader_card__title"></div>
                         </div>
                     ) : error ? (
                         <p>Error: {error.message}</p>
