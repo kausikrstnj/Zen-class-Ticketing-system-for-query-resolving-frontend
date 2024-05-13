@@ -60,12 +60,15 @@ function MyQueries() {
 
     const applyFilter = async (filterCriteria) => {
         setLoading(true);
+        console.log('filterCriteria- ', filterCriteria)
         try {
-            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}?filter=${filterCriteria}`);
+            setQueries([]);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterCriteria}`);
             const data = await response.json();
             setQueries(data.queries);
             setRecentQuery(data.recentQuery);
             setLoading(false);
+            console.log('success ')
         } catch (error) {
             console.error('Error fetching queries:', error);
             setError(error);
@@ -74,8 +77,11 @@ function MyQueries() {
     };
 
     // Call this function whenever filter criteria change
-    const handleFilterChange = (filterCriteria) => {
-        applyFilter(filterCriteria);
+    const handleFilterChange = async () => {
+        event.preventDefault();
+        let filterInput = document.getElementById('filterInput').value;
+        console.log('filterInput- ', filterInput);
+        applyFilter(filterInput);
     };
 
 
@@ -228,12 +234,12 @@ function MyQueries() {
 
                 <div className="container text-center" id='myQueriesContainer'>
                     <form className="myQueriesFilterform">
-                        <button onClick={handleFilterChange}>
+                        <button onClick={() => handleFilterChange()}>
                             <svg width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
-                        <input className="input" placeholder="Search" required="" type="text" />
+                        <input className="input" placeholder="EX : QNo/Title" required="" type="text" id='filterInput' />
                         <button className="reset" type="reset">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
