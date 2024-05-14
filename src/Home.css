@@ -54,39 +54,22 @@
     z-index: 1000;
 }
 
-#tiles {
-    justify-content: center;
-    padding-left: 90px;
-    padding-top: 50px;
-    padding-right: 50px;
-    background-image: url('./assets/dash.jpg');
-}
-
-
-
 /* Dashboard-tile */
 #tileCardRow {
     display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 5px 0;
+    width: 280px;
 }
 
-#tileCard {
-    flex: 1;
-    max-width: calc(25% - 5px);
-    height: 300px;
-    background-color: transparent;
-    color: white;
-    margin-right: 10px;
-    justify-content: center;
-    color: black;
+#tiles {
     display: flex;
+    justify-content: space-between;
+    /* This will evenly distribute the space between the cards */
     flex-wrap: wrap;
-    border: none;
-}
-
-#tileCard:last-child {
-    margin-right: 0;
+    /* Allows cards to wrap to the next line if necessary */
+    padding: 20px;
 }
 
 /* ----------------- */
@@ -305,19 +288,6 @@
     padding: 16px 20px;
     scrollbar-width: thin;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#chatBoxContainer {
-
-    height: 100%;
-    overflow-y: scroll;
-    margin-left: 150px;
-    display: flex;
-    flex-direction: column;
-    grid-gap: 16px;
-    gap: 16px;
-    padding: 16px 20px;
-    scrollbar-width: thin;
 }
 
 #addUser {
@@ -636,4 +606,51 @@ input:not(:placeholder-shown)~.reset {
 .myQueriesFilterform svg {
     width: 17px;
     margin-top: 3px;
+}
+
+
+
+
+
+.tileCard {
+    width: 280px;
+    height: 180px;
+    background: rgb(17, 4, 134);
+    border-radius: 5px;
+    box-shadow: rgb(0, 0, 0, 0.7) 5px 6px 3px, rgb(0, 0, 0, 0.7) -5px 0px 250px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    margin: 30px;
+}
+
+.tileCard:hover {
+    box-shadow: rgb(0, 0, 0) 5px 10px 20px, rgb(0, 0, 0) -5px 0px 250px;
+}
+
+.time-text {
+    font-size: 50px;
+    margin-top: 0px;
+    margin-left: 15px;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.time-sub-text {
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.day-text {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-left: 15px;
+    font-weight: 500;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

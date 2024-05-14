@@ -20,41 +20,41 @@ function Home() {
     const [resolvedQueries, setResolvedQueries] = useState(0);
 
     const totalQuerieschartData = {
-        labels: ['Total Queries'],
+        labels: [''],
         datasets: [
             {
                 backgroundColor: 'purple',
-                data: [totalQueries], // totalQueries is the count of queries
+                data: [totalQueries],
             },
         ],
     };
 
     const pendingQuerieschartData = {
-        labels: ['Pending Queries'],
+        labels: [''],
         datasets: [
             {
                 backgroundColor: 'red',
-                data: [pendingQueries], // totalQueries is the count of queries
+                data: [pendingQueries],
             },
         ],
     };
 
     const assignedQuerieschartData = {
-        labels: ['Assigned Queries'],
+        labels: [''],
         datasets: [
             {
                 backgroundColor: 'blue',
-                data: [assignedQueries], // totalQueries is the count of queries
+                data: [assignedQueries],
             },
         ],
     };
 
     const resolvedQuerieschartData = {
-        labels: ['Resolved Queries'],
+        labels: [''],
         datasets: [
             {
                 backgroundColor: 'lightgreen',
-                data: [resolvedQueries], // totalQueries is the count of queries
+                data: [resolvedQueries],
             },
         ],
     };
@@ -151,12 +151,12 @@ function Home() {
 
                 ) : (
                     <div className="container text-center" id='tiles'>
-                        <h3>Dashboard</h3>
-                        <hr />
-                        <div className="row" id='tileCardRow' style={{ backgroundColor: 'white' }}>
+
+                        <div className="row" id='tileCardRow' >
                             {role == 'student' || 'admin' ? (
-                                <div className="card" id='tileCard'>
-                                    <h5>Total Queries</h5>
+
+                                <div class="tileCard">
+                                    <h6>Total Queries</h6>
                                     <Bar
                                         data={totalQuerieschartData}
                                         options={{
@@ -171,7 +171,9 @@ function Home() {
                                             }
                                         }}
                                     />
+
                                 </div>
+
                             ) : (
                                 <></>
                             )}
@@ -179,8 +181,9 @@ function Home() {
                             {role == 'mentor' ? (
                                 <></>
                             ) : (
-                                <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                                    <h5 >Pending Queries</h5>
+
+                                <div class="tileCard">
+                                    <h6>Pending Queries</h6>
                                     <Bar
                                         data={pendingQuerieschartData}
                                         options={{
@@ -198,8 +201,9 @@ function Home() {
                                 </div>
                             )}
 
-                            <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                                <h5>Resolved Queries</h5>
+
+                            <div class="tileCard">
+                                <h6>Resolved Queries</h6>
                                 <Bar
                                     data={resolvedQuerieschartData}
                                     options={{
@@ -217,8 +221,8 @@ function Home() {
                             </div>
 
                             {role === 'mentor' ? (
-                                <div className="card" id='tileCard' style={{ backgroundColor: 'white' }}>
-                                    <h5> Assigned to me</h5>
+                                <div class="tileCard">
+                                    <h6>Assigned Queries</h6>
                                     <Bar
                                         data={assignedQuerieschartData}
                                         options={{
@@ -239,7 +243,7 @@ function Home() {
                             )}
 
                         </div>
-                        <hr />
+
                     </div>)}
             </div>
         </>
