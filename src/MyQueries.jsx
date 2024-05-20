@@ -38,9 +38,7 @@ function MyQueries() {
         } else {
             mimeType = 'image/png';
         }
-        // Convert the file path to Blob object
         const blob = new Blob([recentQuery.attachment], { type: mimeType });
-        // Read the file as a data URL (base64 string)
         reader.readAsDataURL(blob);
     };
 
@@ -185,7 +183,7 @@ function MyQueries() {
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
                             <Link to={`/`} className="nav-link text-white">
-                                <span className="text">📊Dashboard</span>
+                                <span className="text">Dashboard</span>
                             </Link>
                         </li>
                         <hr />
@@ -193,7 +191,7 @@ function MyQueries() {
                             <li>
                                 <Link to={`/CreateQuery/${userId}`} className="nav-link text-white" onClick={createQuery}>
                                     <span className="icon"><i className="bi bi-plus-square-fill"></i></span> {/* Example icon */}
-                                    <span className="text">➕Create Query</span>
+                                    <span className="text">Create Query</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -203,7 +201,7 @@ function MyQueries() {
                         {role == 'admin' ? (
                             <li>
                                 <Link to={`/queries/${userId}`} className="nav-link text-white">
-                                    <span className="icon">📂All Queries</span>
+                                    <span className="icon">All Queries</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -211,7 +209,7 @@ function MyQueries() {
                         ) : (
                             <li>
                                 <Link to={`/queries/${userId}`} className="nav-link text-white">
-                                    <span className="icon">📂My Queries</span>
+                                    <span className="icon">My Queries</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -219,7 +217,7 @@ function MyQueries() {
 
                         {role === 'admin' ? (<li>
                             <Link to={'/assignedQueries'} className="nav-link text-white">
-                                <span className="icon">📦</span>
+
                                 <span className="text">Queries Assigned</span>
                             </Link>
                             <hr />
@@ -233,13 +231,13 @@ function MyQueries() {
                 </div>
 
                 <div className="container text-center" id='myQueriesContainer'>
-                    <form className="myQueriesFilterform">
-                        <button onClick={() => handleFilterChange()}>
+                    <form className="myQueriesFilterform" onSubmit={handleFilterChange}>
+                        <button type='submit'>
                             <svg width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
-                        <input className="input" placeholder="EX : QNo/Title" required="" type="text" id='filterInput' />
+                        <input className="input" placeholder="EX : QNo/Title" type="text" id='filterInput' />
                         <button className="reset" type="reset">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>

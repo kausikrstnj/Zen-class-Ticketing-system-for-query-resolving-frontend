@@ -50,7 +50,7 @@ function AssignedQueries() {
                     <ul className="nav nav-pills flex-column mb-auto">
                         <li className="nav-item">
                             <Link to={`/`} className="nav-link text-white">
-                                <span className="text">📊Dashboard</span>
+                                <span className="text">Dashboard</span>
                             </Link>
                         </li>
                         <hr />
@@ -58,7 +58,7 @@ function AssignedQueries() {
                             <li>
                                 <Link to={`/CreateQuery/${userId}`} className="nav-link text-white" onClick={createQuery}>
                                     <span className="icon"><i className="bi bi-plus-square-fill"></i></span> {/* Example icon */}
-                                    <span className="text">➕Create Query</span>
+                                    <span className="text">Create Query</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -68,7 +68,7 @@ function AssignedQueries() {
                         {role == 'admin' ? (
                             <li>
                                 <Link to={`/queries/${userId}`} className="nav-link text-white">
-                                    <span className="icon">📂All Queries</span>
+                                    <span className="icon">All Queries</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -76,7 +76,7 @@ function AssignedQueries() {
                         ) : (
                             <li>
                                 <Link to={`/queries/${userId}`} className="nav-link text-white">
-                                    <span className="icon">📂My Queries</span>
+                                    <span className="icon">My Queries</span>
                                 </Link>
                                 <hr />
                             </li>
@@ -84,7 +84,7 @@ function AssignedQueries() {
 
                         {role === 'admin' ? (<li>
                             <Link to={'/assignedQueries'} className="nav-link text-white">
-                                <span className="icon">📦</span>
+
                                 <span className="text">Queries Assigned</span>
                             </Link>
                             <hr />
@@ -100,10 +100,12 @@ function AssignedQueries() {
 
 
                 <div className="container text-center" id='myQueriesContainer'>
-                    <h3>Assigned Queries</h3>
+
                     {loading ? (
                         <div className="assignedQueriesloadercard">
-                            <div className="assignedQueries_loader_card__skeleton assignedQueries_loader_card__title"></div>
+                            <div id='editProfile'>
+                                <div class="loader"></div>
+                            </div>
                         </div>
                     ) : error ? (
                         <p>Error: {error.message}</p>
