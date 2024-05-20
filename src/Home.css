@@ -1,3 +1,75 @@
+/* Navbar Styles */
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    /* Change to your desired hover color */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    clear: both;
+    font-weight: 400;
+    color: #333;
+    text-align: left;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    /* Change to your desired hover background color */
+}
+
+/* Active Link Style */
+.active {
+    background-color: #007bff;
+    /* Change to your desired active background color */
+    color: #fff;
+    /* Change to your desired active text color */
+}
+
+/* ------------------------------------------------------------------------------------ */
+
 #zenclass {
     font-size: large;
 }
@@ -9,13 +81,13 @@
     font-size: smaller;
 }
 
-.navbar {
+/* .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     background-color: #555;
-}
+} */
 
 .btn-primary {
     margin: 10px;
@@ -49,11 +121,11 @@
     text-align: center;
 }
 
-.navbar {
+/* .navbar {
     position: fixed;
     width: 100%;
     z-index: 1000;
-}
+} */
 
 
 
@@ -179,25 +251,6 @@
     display: inline;
 }
 
-
-/* #myQueriesCard1 {
-    min-width: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    cursor: pointer;
-    position: relative;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #e0eafc, #cfdef3);
-    font-size: 14px;
-    color: #fff;
-    border-radius: 8px;
-    transition: transform 0.3s, box-shadow 0.3s;
-} */
-
 #myQueriesCard1 {
     min-width: 100px;
     width: 100%;
@@ -272,19 +325,6 @@
 #categoryDet {
     font-weight: bold;
 }
-
-/* #myQueriesCard2 {
-    background: #fff;
-    border: 1px solid #dedede;
-    box-sizing: border-box;
-    border-radius: 16px;
-    min-height: 87vh;
-    padding: 10px;
-    overflow-y: scroll;
-    padding: 16px 25px;
-} */
-
-
 
 #backButton {
     display: flex;
@@ -447,10 +487,6 @@
     border-radius: 10px;
     border: 2px solid grey;
 }
-
-
-
-
 
 .loadercard {
     width: 23rem;

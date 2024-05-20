@@ -17,9 +17,6 @@ import ForgotPassword from "./ForgotPassword";
 import OTP from "./OTP";
 import ChangePassword from "./ChangePassword";
 import AssignedQueries from "./AssignedQueries";
-
-
-
 import './Home.css'
 
 const MainRouter = () => {

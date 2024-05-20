@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './Home.css'
 import Filebase64 from 'react-file-base64'
+import axios from 'axios';
 
 function MyQueries() {
     const navigate = useNavigate();
@@ -56,12 +57,14 @@ function MyQueries() {
         getQueries();
     }, []);
 
-    const applyFilter = async (filterCriteria) => {
+    const applyFilter = async () => {
+        event.preventDefault();
         setLoading(true);
-        console.log('filterCriteria- ', filterCriteria)
         try {
+            let filterInput = document.getElementById('filterInput').value;
+            console.log('filterCriteria- ', filterCriteria)
             setQueries([]);
-            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterCriteria}`);
+            const response = await axios.get(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
             const data = await response.json();
             setQueries(data.queries);
             setRecentQuery(data.recentQuery);
@@ -73,15 +76,6 @@ function MyQueries() {
             setLoading(false);
         }
     };
-
-    // Call this function whenever filter criteria change
-    const handleFilterChange = async () => {
-        event.preventDefault();
-        let filterInput = document.getElementById('filterInput').value;
-        console.log('filterInput- ', filterInput);
-        applyFilter(filterInput);
-    };
-
 
     const getQueries = async () => {
         try {
@@ -231,7 +225,7 @@ function MyQueries() {
                 </div>
 
                 <div className="container text-center" id='myQueriesContainer'>
-                    <form className="myQueriesFilterform" onSubmit={handleFilterChange}>
+                    <form className="myQueriesFilterform" onSubmit={() => applyFilter()}>
                         <button type='submit'>
                             <svg width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
