@@ -494,6 +494,7 @@
     text-align: center;
     border-radius: .8rem;
     background-color: white;
+    height: 90vh;
 }
 
 .loader_card__skeleton {

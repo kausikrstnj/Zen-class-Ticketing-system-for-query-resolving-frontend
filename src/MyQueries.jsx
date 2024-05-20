@@ -57,16 +57,17 @@ function MyQueries() {
         getQueries();
     }, []);
 
-    const applyFilter = async () => {
+    const applyFilter = async (event) => {
         event.preventDefault();
         setLoading(true);
         try {
             let filterInput = document.getElementById('filterInput').value;
-            console.log('filterCriteria- ', filterCriteria)
+            console.log('filterInput- ', filterInput)
             setQueries([]);
-            const response = await axios.get(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
+            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
             const data = await response.json();
-            setQueries(data.queries);
+            // setQueries(data.queries);
+            setQueries(data.queries.map((query, index) => ({ ...query, key: index })));
             setRecentQuery(data.recentQuery);
             setLoading(false);
             console.log('success ')
@@ -81,7 +82,8 @@ function MyQueries() {
         try {
             const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}`);
             const data = await response.json();
-            setQueries(data.queries);
+            // setQueries(data.queries);
+            setQueries(data.queries.map((query, index) => ({ ...query, key: index })));
             setRecentQuery(data.recentQuery);
             setLoading(false);
         } catch (error) {
@@ -225,16 +227,16 @@ function MyQueries() {
                 </div>
 
                 <div className="container text-center" id='myQueriesContainer'>
-                    <form className="myQueriesFilterform" onSubmit={() => applyFilter()}>
+                    <form className="myQueriesFilterform" onSubmit={applyFilter}>
                         <button type='submit'>
                             <svg width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" strokeWidth="1.333" strokeLinecap="round" strokeLinejoin="round"></path>
                             </svg>
                         </button>
-                        <input className="input" placeholder="EX : QNo/Title" type="text" id='filterInput' />
+                        <input className="input" placeholder="EX : QNo/Title" type="text" id='filterInput' onChange={applyFilter} />
                         <button className="reset" type="reset">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                         </button>
                     </form>
@@ -321,8 +323,8 @@ function MyQueries() {
                 <div className="container text-center" id='myQueriesContainer2'>
                     {loading ? (
                         <div className='card' id='myQueriesCard2'>
-                            <div id='editProfile'>
-                                <div class="loader"></div>
+                            <div id='loader' style={{ display: 'flex', justifyContent: 'center', alignSelf: 'center' }}>
+                                <div className="loader"></div>
                             </div>
                         </div>
                     ) : recentQuery ? (
