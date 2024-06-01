@@ -50,20 +50,20 @@ function Profile() {
     };
 
     return (
-        <div>
+        <div className='container' id='myProfileContainer'>
             {userData.length === 0 ? (
-                <div id='editProfile'>
+                <div id='myProfile'>
                     <div class="loader"></div>
                 </div>
 
             ) : (
                 userData.map(user => (
-                    <div id='editProfile'>
+                    <div id='myProfile'>
                         <div className="form-container">
                             <div className="logo-container">
                                 My Profile
                             </div>
-                            <div className="line"></div>
+                            <div className="line" ></div>
                             <form className="container">
                                 <div className="form-group  w-100">
                                     <label htmlFor="name" className='form-label'>Name</label>
@@ -92,7 +92,7 @@ function Profile() {
                                 )}
                             </form>
                         </div>
-                    </div >
+                    </div>
                 )
                 ))
             }

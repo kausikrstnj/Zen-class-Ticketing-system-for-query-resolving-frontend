@@ -1,6 +1,6 @@
-body{
+body {
     margin: 0;
-    width:100vw;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -83,7 +83,7 @@ body{
 #sidebar {
     position: static;
     width: 80px;
-    
+
     font-size: smaller;
     backdrop-filter: blur(6px) saturate(67%);
     -webkit-backdrop-filter: blur(6px) saturate(67%);
@@ -92,45 +92,35 @@ body{
     border-right: 1px solid rgba(255, 255, 255, 0.125);
 }
 
-.navcontents{
+.navcontents {
     width: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
-.navtext{
+
+.navtext {
     width: 40px;
     height: 40px;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: #ffff;
 }
 
-.navanchor{
-    background-color:#753fd3 !important;
-    
+.navanchor {
+    background-color: #753fd3 !important;
+
 }
-.userlist{
+
+.userlist {
     backdrop-filter: blur(6px) saturate(67%) !important;
     -webkit-backdrop-filter: blur(6px) saturate(67%) !important;
-    background-color: rgba(17, 25, 40, 0.17) !important; 
+    background-color: rgba(17, 25, 40, 0.17) !important;
     border: 1px solid rgba(255, 255, 255, 0.125) !important;
-    
+
 }
-
-
-/* .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #555;
-} */
-
-/* .btn-primary {
-    margin: 10px;
-} */
 
 .home {
     display: flex;
@@ -160,14 +150,6 @@ body{
     text-align: center;
 }
 
-/* .navbar {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-} */
-
-
-
 #tiles {
     display: flex;
     width: 100%;
@@ -177,16 +159,12 @@ body{
     justify-content: space-between;
 }
 
-/* ----------------- */
+
 #createQueryCard {
     height: auto;
 }
 
-#createquery {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-}
+
 
 .form {
     background-color: #fff;
@@ -291,30 +269,24 @@ body{
 }
 
 #myQueriesCard1 {
-    /* min-width: 100px;
-    width: 100%; */
     height: 250px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
     position: relative;
-    /* padding: 20px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     backdrop-filter: blur(6px) saturate(67%);
     -webkit-backdrop-filter: blur(6px) saturate(67%);
     background-color: rgba(104, 104, 104, 0.17);
-    /* background: linear-gradient(to right, #acacac94, #5b5b5cc0); */
-    /* Updated professional background colors */
     font-size: 14px;
     color: #333;
     border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 8px;
-    /* transition: transform 0.3s, box-shadow 0.3s; */
 }
 
-#querycardassign{
+#querycardassign {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     backdrop-filter: blur(6px) saturate(67%);
@@ -330,11 +302,6 @@ body{
     position: relative;
 }
 
-/* #myQueriesCard1:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-} */
-
 .card-my-query {
     display: flex;
     flex-direction: column;
@@ -342,26 +309,11 @@ body{
     padding: 3px;
 }
 
-/* #card1row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-
-/* #myQueriesCard1QT {
-    font-weight: bold;
-    font-size: 16px;
-    color: #333;
-} */
-
 #card1status {
-    /* font-size: 12px; */
     padding: 4px;
     border-radius: 4px;
     background-color: #e0eafc;
-    /* Light background color for status */
     color: #007bff;
-    /* Professional blue color for text */
     text-align: right;
 }
 
@@ -372,22 +324,12 @@ body{
     margin-top: 10px;
 }
 
-/* #categoryDet,
-#created,
-#userPhn {
-    font-size: 12px;
-} */
 
 #placementcreated {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-/* #categoryDet {
-    font-size: 12px;
-
-} */
 
 #backButton {
     display: flex;
@@ -422,49 +364,16 @@ body{
     justify-content: center;
 }
 
-/* chatbox css */
-.chat-box {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.chat-history {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.message {
-    padding: 8px 16px;
-    margin: 4px;
-    border-radius: 8px;
-    clear: both;
-    word-wrap: break-word;
-}
-
-.from-student {
-    background-color: #DCF8C6;
-    float: right;
-}
-
-.from-mentor {
-    background-color: #E5E5EA;
-    float: left;
-}
-
 #myQueriesContainer {
     width: 90%;
     height: 95%;
     overflow-y: scroll;
-    /* margin-left: 20px; */
     display: flex;
     flex-direction: column;
     grid-gap: 16px;
     gap: 16px;
-    /* padding: 16px 20px; */
     scrollbar-width: thin;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* background-color: #f5f5f5; */
     backdrop-filter: blur(6px) saturate(67%);
     -webkit-backdrop-filter: blur(6px) saturate(67%);
     background-color: rgba(17, 25, 40, 0.17);
@@ -477,17 +386,14 @@ body{
     justify-content: space-between;
 }
 
-
-#createquerydet {
+/* #createquerydet {
     padding-left: 100px;
-}
-
+} */
 
 #myQueriesCard1QT {
     display: flex;
     justify-content: space-between;
 }
-
 
 #myQueryButton {
     min-width: 100px;
@@ -495,7 +401,7 @@ body{
     margin: none;
     border-radius: 5px 5px 0px 0px;
     backdrop-filter: blur(6px) saturate(67%);
-    
+
     background-color: rgba(68, 69, 69, 0.238);
 }
 
@@ -512,27 +418,6 @@ body{
     border-radius: 5px;
     padding: 5px;
 }
-
-
-
-/* #categoryDet {
-    border: 2px solid #c5a0eb;
-    color: #c5a0eb;
-    border-radius: 10px;
-} */
-
-/* #created {
-    text-align: right;
-} */
-
-/* #categoryDet {
-    text-align: left;
-} */
-
-/* #placementcreated {
-    display: inline-block;
-    justify-content: space-between;
-} */
 
 .attachment-container {
     display: flex;
@@ -667,11 +552,6 @@ body{
     }
 }
 
-
-/* Filter  */
-/* From uiverse.io by @satyamchaudharydev */
-/* removing default style of button */
-
 .myQueriesFilterform button {
     border: none;
     background: none;
@@ -767,15 +647,12 @@ input:focus {
 .tileCard {
     width: 280px;
     height: 180px;
-    /* background: rgb(17, 4, 134); */
-    /* border-radius: 5px; */
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     color: white;
     justify-content: center;
     position: relative;
     flex-direction: column;
-    /* background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85)); */
     overflow: hidden;
     margin: 30px;
     position: static;
@@ -785,7 +662,7 @@ input:focus {
     background-color: rgba(17, 25, 40, 0.17);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
-    
+
 }
 
 /* .tileCard:hover {
@@ -815,7 +692,7 @@ input:focus {
     width: 100%;
 } */
 
-.chart{
+.chart {
     backdrop-filter: blur(6px) saturate(67%);
     -webkit-backdrop-filter: blur(6px) saturate(67%);
     background-color: rgba(17, 25, 40, 0.17);
@@ -847,13 +724,13 @@ Line {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
     box-sizing: border-box;
-    
+
     min-height: 80vh;
     width: 100%;
     max-width: 600px;
-    
+
     overflow-y: auto;
-    
+
 }
 
 /* #editProfile .loader {
@@ -988,28 +865,28 @@ Line {
 /* h3 {
     /* font-size: 24px;
     color: #00796b; */
-    /* Dark teal color for the heading */
-    /* margin-bottom: 20px; */
-    /* Space below the heading */
-    /* position: sticky; */
-    /* Make the heading sticky */
-    /* top: 0; */
-    /* Stick to the top of the container */
-    /* background-color: #e0f7fa; */
-    /* Match the gradient color to avoid overlap issues */
-    /* z-index: 1; */
-    /* Ensure it stays above other elements */
-    /* padding: 10px 0; */
-    /* Padding for better spacing */
-    /* border-bottom: 1px solid #ddd; */
-    /* Light border below the heading 
+/* Dark teal color for the heading */
+/* margin-bottom: 20px; */
+/* Space below the heading */
+/* position: sticky; */
+/* Make the heading sticky */
+/* top: 0; */
+/* Stick to the top of the container */
+/* background-color: #e0f7fa; */
+/* Match the gradient color to avoid overlap issues */
+/* z-index: 1; */
+/* Ensure it stays above other elements */
+/* padding: 10px 0; */
+/* Padding for better spacing */
+/* border-bottom: 1px solid #ddd; */
+/* Light border below the heading 
 } */
 
 /* .text-body-secondary {
     /* color: #555; */
-    /* Slightly darker grey color for secondary text */
-    /* font-size: 14px; */
-    /* Slightly smaller font size for secondary text 
+/* Slightly darker grey color for secondary text */
+/* font-size: 14px; */
+/* Slightly smaller font size for secondary text 
 } */
 
 .row {
@@ -1111,4 +988,42 @@ hr {
 .text-body-secondary {
     /* font-size: 14px; */
     /* Smaller font size for secondary text */
+}
+
+
+#createquery {
+    height: 510px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(104, 104, 104, 0.17);
+    font-size: 14px;
+    color: #333;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#createquery {
+    flex: 1;
+    padding: 40px;
+    overflow-y: scroll;
+}
+
+#createqueryCard {
+    background-color: transparent;
+    color: white;
+}
+
+#Heading {
+    font-family: sans-serif;
+    font-size: x-large;
+    text-align: left;
+    font-weight: 700;
 }

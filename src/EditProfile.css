@@ -162,6 +162,12 @@
     height: 97vh;
 }
 
+#myProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 #forgot-password-container {
     padding-top: 50px;
@@ -322,4 +328,8 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+#myProfileContainer {
+    padding: 20px;
 }
