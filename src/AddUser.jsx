@@ -74,30 +74,35 @@ function AddUser() {
     };
 
     return (
-
-        <div className="container" id='addUserContainer'>
-            <h2>Add User</h2>
-            <p>User's default role will be mentor</p>
+        <>
+        <div className="container w-50  userpage p-4" >
+            <div className='text-white'>
+                <h2>Add User</h2>
+                <p>User's default role will be mentor</p>
+            </div>
+            
             <form className="" ref={form} >
-                <div className="form-floating mb-2">
+                <div className="form-floating mb-3">
                     <input type="text" className="form-control" id="name" name='name' placeholder="Name" value={values.name} onChange={handleChange('name')} required />
                     <label htmlFor="floatingInput">Username</label>
                 </div>
-                <div className="form-floating mb-2">
-                    <input type="number" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
+                <div className="form-floating mb-3">
+                    <input type="tel" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
                     <label htmlFor="floatingInput">Phone number</label>
                 </div>
-                <div className="form-floating mb-2">
+                <div className="form-floating mb-3">
                     <input type="email" className="form-control" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
                     <label htmlFor="floatingInput">Email address</label>
                 </div>
-                <div className="form-floating mb-2">
+                <div className="form-floating mb-3">
                     <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
                     <label htmlFor="floatingPassword">Password</label>
                 </div>
-                <button className=" mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Add User</button>
+                <button className="mt-2 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Add User</button>
             </form>
         </div>
+        </>
+        
 
     )
 }

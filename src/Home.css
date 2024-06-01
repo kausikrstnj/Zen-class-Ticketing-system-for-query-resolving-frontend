@@ -1,3 +1,9 @@
+body{
+    margin: 0;
+    width:100vw;
+    height: 100vh;
+}
+
 /* Navbar Styles */
 .navbar-nav {
     list-style: none;
@@ -76,10 +82,43 @@
 
 #sidebar {
     position: static;
-    width: 150px;
-    background-color: #333;
+    width: 80px;
+    
     font-size: smaller;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    /* border-radius: 12px; */
+    border-right: 1px solid rgba(255, 255, 255, 0.125);
 }
+
+.navcontents{
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navtext{
+    width: 40px;
+    height: 40px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+}
+
+.navanchor{
+    background-color:#753fd3 !important;
+    
+}
+.userlist{
+    backdrop-filter: blur(6px) saturate(67%) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(67%) !important;
+    background-color: rgba(17, 25, 40, 0.17) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.125) !important;
+    
+}
+
 
 /* .navbar {
     position: fixed;
@@ -89,9 +128,9 @@
     background-color: #555;
 } */
 
-.btn-primary {
+/* .btn-primary {
     margin: 10px;
-}
+} */
 
 .home {
     display: flex;
@@ -252,49 +291,72 @@
 }
 
 #myQueriesCard1 {
-    min-width: 100px;
-    width: 100%;
+    /* min-width: 100px;
+    width: 100%; */
+    height: 250px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
     cursor: pointer;
     position: relative;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #f7f8fa, #e2e5ec);
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(104, 104, 104, 0.17);
+    /* background: linear-gradient(to right, #acacac94, #5b5b5cc0); */
     /* Updated professional background colors */
     font-size: 14px;
     color: #333;
+    border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 8px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    /* transition: transform 0.3s, box-shadow 0.3s; */
 }
 
-#myQueriesCard1:hover {
+#querycardassign{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(104, 104, 104, 0.17);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 8px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* #myQueriesCard1:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .card-my-query {
     display: flex;
     flex-direction: column;
+    margin: none;
+    padding: 3px;
 }
 
-#card1row {
+/* #card1row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-#myQueriesCard1QT {
+/* #myQueriesCard1QT {
     font-weight: bold;
     font-size: 16px;
     color: #333;
-}
+} */
 
 #card1status {
-    font-size: 12px;
-    padding: 4px 8px;
+    /* font-size: 12px; */
+    padding: 4px;
     border-radius: 4px;
     background-color: #e0eafc;
     /* Light background color for status */
@@ -310,11 +372,11 @@
     margin-top: 10px;
 }
 
-#categoryDet,
+/* #categoryDet,
 #created,
 #userPhn {
     font-size: 12px;
-}
+} */
 
 #placementcreated {
     display: flex;
@@ -322,9 +384,10 @@
     align-items: center;
 }
 
-#categoryDet {
-    font-weight: bold;
-}
+/* #categoryDet {
+    font-size: 12px;
+
+} */
 
 #backButton {
     display: flex;
@@ -390,18 +453,23 @@
 }
 
 #myQueriesContainer {
-    width: 80%;
+    width: 90%;
     height: 95%;
     overflow-y: scroll;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     display: flex;
     flex-direction: column;
     grid-gap: 16px;
     gap: 16px;
-    padding: 16px 20px;
+    /* padding: 16px 20px; */
     scrollbar-width: thin;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 #addUser {
@@ -425,7 +493,10 @@
     min-width: 100px;
     border: none;
     margin: none;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+    backdrop-filter: blur(6px) saturate(67%);
+    
+    background-color: rgba(68, 69, 69, 0.238);
 }
 
 .UserProfilecontainer {
@@ -442,30 +513,26 @@
     padding: 5px;
 }
 
-.card-my-query {
-    margin: none;
-    padding: 3px;
-}
 
 
-#categoryDet {
+/* #categoryDet {
     border: 2px solid #c5a0eb;
     color: #c5a0eb;
     border-radius: 10px;
-}
+} */
 
-#created {
+/* #created {
     text-align: right;
-}
+} */
 
-#categoryDet {
+/* #categoryDet {
     text-align: left;
-}
+} */
 
-#placementcreated {
+/* #placementcreated {
     display: inline-block;
     justify-content: space-between;
-}
+} */
 
 .attachment-container {
     display: flex;
@@ -674,24 +741,24 @@ input:focus {
 
 /* styling of close button */
 /* == you can click the close button to remove text == */
-.reset {
+/* .reset {
     border: none;
     background: none;
     opacity: 0;
     visibility: hidden;
-}
+} */
 
 /* close button shown when typing */
-input:not(:placeholder-shown)~.reset {
+/* input:not(:placeholder-shown)~.reset {
     opacity: 1;
     visibility: visible;
-}
+} */
 
 /* sizing svg icons */
-.myQueriesFilterform svg {
+/* .myQueriesFilterform svg {
     width: 17px;
     margin-top: 3px;
-}
+} */
 
 
 
@@ -700,46 +767,60 @@ input:not(:placeholder-shown)~.reset {
 .tileCard {
     width: 280px;
     height: 180px;
-    background: rgb(17, 4, 134);
-    border-radius: 5px;
+    /* background: rgb(17, 4, 134); */
+    /* border-radius: 5px; */
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     color: white;
     justify-content: center;
     position: relative;
     flex-direction: column;
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+    /* background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85)); */
     overflow: hidden;
     margin: 30px;
     position: static;
     padding: 10px;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    
 }
 
 /* .tileCard:hover {
     box-shadow: rgb(0, 0, 0) 5px 10px 20px, rgb(0, 0, 0) -5px 0px 250px;
 } */
 
-.time-text {
+/* .time-text {
     font-size: 50px;
     margin-top: 0px;
     margin-left: 15px;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 
 
-.tilesContainer {
+/* .tilesContainer {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
-}
+} */
 
-.chartContainer {
+/* .chartContainer {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     width: 100%;
+} */
+
+.chart{
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 Line {
@@ -748,7 +829,7 @@ Line {
 }
 
 
-#myQueriesContainer2 {
+/* #myQueriesContainer2 {
     padding: 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -757,31 +838,34 @@ Line {
     background-color: #f5f5f5;
     min-height: 80vh;
     align-content: center;
-}
+} */
 
 #myQueriesCard2 {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    box-sizing: border-box;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
     border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-sizing: border-box;
+    
     min-height: 80vh;
     width: 100%;
     max-width: 600px;
-    padding: 20px;
+    
     overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
-#editProfile .loader {
+/* #editProfile .loader {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
     border-radius: 50%;
     width: 30px;
     height: 30px;
     animation: spin 2s linear infinite;
-}
+} */
 
-@keyframes spin {
+/* @keyframes spin {
     0% {
         transform: rotate(0deg);
     }
@@ -789,49 +873,49 @@ Line {
     100% {
         transform: rotate(360deg);
     }
-}
+} */
 
-#recentQuery {
+/* #recentQuery {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-}
+} */
 
-#recentQueryHeader {
+/* #recentQueryHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
     margin-bottom: 10px;
-}
+} */
 
-#status {
+/* #status {
     font-size: 14px;
     padding: 5px 10px;
     border-radius: 5px;
     background-color: #e0f7fa;
     color: #00796b;
-}
+} */
 
-.row {
+/* .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 10px 0;
-}
+} */
 
-#detrow {
+/* #detrow {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
+} */
 
-.text-body-secondary {
+/* .text-body-secondary {
     color: #757575;
     font-size: 14px;
-}
+} */
 
-#desc {
+/* #desc {
     margin: 10px 0;
 }
 
@@ -844,8 +928,8 @@ Line {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
+} */
+/* 
 #goToQuery {
     margin-top: 20px;
     text-align: center;
@@ -861,20 +945,20 @@ Line {
 
 #goToQuery .btn:hover {
     background-color: #0056b3;
-}
+} */
 
 /*------------------- ViewQuery.jsx */
 
-#ViewQueryParent {
+/* #ViewQueryParent {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     background-color: #f8f9fa;
     padding: 20px;
-}
+} */
 
-#viewQueryContainer2 {
+/* #viewQueryContainer2 {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -885,9 +969,9 @@ Line {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     width: 100%;
-}
+} */
 
-#viewQueriesCard {
+/* #viewQueriesCard {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -899,71 +983,71 @@ Line {
     color: #333;
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+} */
 
-h3 {
-    font-size: 24px;
-    color: #00796b;
+/* h3 {
+    /* font-size: 24px;
+    color: #00796b; */
     /* Dark teal color for the heading */
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     /* Space below the heading */
-    position: sticky;
+    /* position: sticky; */
     /* Make the heading sticky */
-    top: 0;
+    /* top: 0; */
     /* Stick to the top of the container */
-    background-color: #e0f7fa;
+    /* background-color: #e0f7fa; */
     /* Match the gradient color to avoid overlap issues */
-    z-index: 1;
+    /* z-index: 1; */
     /* Ensure it stays above other elements */
-    padding: 10px 0;
+    /* padding: 10px 0; */
     /* Padding for better spacing */
-    border-bottom: 1px solid #ddd;
-    /* Light border below the heading */
-}
+    /* border-bottom: 1px solid #ddd; */
+    /* Light border below the heading 
+} */
 
-.text-body-secondary {
-    color: #555;
+/* .text-body-secondary {
+    /* color: #555; */
     /* Slightly darker grey color for secondary text */
-    font-size: 14px;
-    /* Slightly smaller font size for secondary text */
-}
+    /* font-size: 14px; */
+    /* Slightly smaller font size for secondary text 
+} */
 
 .row {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
     /* Space between rows */
 }
 
 #detrow {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 10px; */
     /* Space between detail rows */
 }
 
 #desc {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
     /* Space between description sections */
 }
 
 .attachment-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
     /* Space between attachment sections */
 }
 
 #imagePreview img {
-    height: 100px;
+    /* height: 100px;
     width: 100px;
-    border-radius: 8px;
+    border-radius: 8px; */
     /* Rounded corners for the image */
-    object-fit: cover;
+    /* object-fit: cover; */
     /* Maintain aspect ratio and cover the container */
-    border: 2px solid #80deea;
+    /* border: 2px solid #80deea; */
     /* Add a border that matches the gradient */
 }
 
@@ -971,60 +1055,60 @@ hr {
     border: none;
     border-top: 1px solid #ddd;
     /* Light border for the horizontal rule */
-    margin: 20px 0;
+    /* margin: 20px 0; */
     /* Space above and below the horizontal rule */
 }
 
 #viewQueriesCard .card {
-    border: none;
+    /* border: none; */
     /* Remove border from card */
-    border-radius: 8px;
+    /* border-radius: 8px; */
     /* Add rounded corners to card */
 }
 
 .attachment-container p {
-    margin: 0;
+    /* margin: 0; */
     /* Remove default margin */
-    padding: 0;
+    /* padding: 0; */
     /* Remove default padding */
-    font-weight: 600;
+    /* font-weight: 600; */
     /* Make attachment label bold */
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     /* Space below the label */
 }
 
 #detrow span {
-    flex: 1;
+    /* flex: 1; */
     /* Allow spans to take equal space */
-    margin-right: 10px;
+    /* margin-right: 10px; */
     /* Space between spans */
 }
 
 #createdAt,
 #assignedTo {
-    font-weight: bold;
-    color: #00796b;
+    /* font-weight: bold;
+    color: #00796b; */
     /* Dark teal color for the labels */
-    margin-right: 10px;
-    flex: 1;
+    /* margin-right: 10px;
+    flex: 1; */
     /* Allow labels to take up equal space */
 }
 
 #createdAtData,
 #assignedToData {
-    color: #333;
+    /* color: #333; */
     /* Darker text color for readability */
-    flex: 1;
+    /* flex: 1; */
     /* Allow data to take up equal space */
 }
 
-.row {
+/* .row {
     display: flex;
     flex-direction: column;
     padding: 20px;
-}
+} */
 
 .text-body-secondary {
-    font-size: 14px;
+    /* font-size: 14px; */
     /* Smaller font size for secondary text */
 }

@@ -68,36 +68,39 @@ function Signup() {
         <>
             <div className="modal modal-sheet position-static d-block bg-body-white p-2 py-md-2" role="dialog" id="modalSignin">
                 <div className="modal-dialog" role="document">
-                    <div className="modal-content rounded-4 shadow">
-                        <div className="modal-header p-4 pb-3 border-bottom-0">
+                    <div className="modal-content rounded-3 shadow signupbox">
+                        <div className="modal-header p-4 pb-3 border-bottom-0 text-white">
                             <h1 className="fw-bold mb-0 fs-2">Sign up for free</h1>
                         </div>
 
                         <div className="modal-body p-4 pt-0">
-                            <form className="" ref={form} >
+                            <form  ref={form} >
                                 <div className="form-floating mb-2">
-                                    <input type="text" className="form-control" id="name" name='name' placeholder="Name" value={values.name} onChange={handleChange('name')} required />
-                                    <label htmlFor="floatingInput">Username</label>
+                                    <input type="text" className="form-control signinp" id="name" name='name' placeholder="" value={values.name} onChange={handleChange('name')} required />
+                                    <label htmlFor="floatingInput" className='formlabel' >Username</label>
                                 </div>
                                 <div className="form-floating mb-2">
-                                    <input type="number" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
-                                    <label htmlFor="floatingInput">Phone number</label>
+                                    <input type="tel" className="form-control signinp" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
+                                    <label htmlFor="floatingInput" className='formlabel'>Phone number</label>
                                 </div>
                                 <div className="form-floating mb-2">
-                                    <input type="email" className="form-control" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
-                                    <label htmlFor="floatingInput">Email address</label>
+                                    <input type="email" className="form-control signinp" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
+                                    <label htmlFor="floatingInput" className='formlabel'>Email address</label>
                                 </div>
                                 <div className="form-floating mb-2">
-                                    <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
-                                    <label htmlFor="floatingPassword">Password</label>
+                                    <input type="password" className="form-control signinp" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
+                                    <label htmlFor="floatingPassword" className='formlabel'>Password</label>
                                 </div>
-                                <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Sign up</button>
+                                <button className="w-100 mb-1 btn btn-lg rounded-3 signbtn" type="submit" onClick={sendEmail}>Sign up</button>
                             </form>
                         </div>
-                        <p className="signup-link">
-                            Already have an account?
-                            <Link className="signup-link link" to={`/signin`}> Sign in</Link>
-                        </p>
+
+                        <div className="signup-link text-light p-4 w-100">
+                            <h1 className='fs-3' >Already have an account?</h1>
+                            <button className='btn btn-lg mb-3 w-100 signbtn' >
+                            <Link className="text-decoration-none text-light" to={`/signin`}>Sign in</Link>
+                            </button>    
+                        </div>
                     </div>
                 </div>
             </div>

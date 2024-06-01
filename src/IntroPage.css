@@ -3,6 +3,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-image: url(./assets/type1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Header Styles */
@@ -34,70 +38,88 @@ nav ul li a {
 
 /* Main Content Styles */
 .main-content {
-    padding: 20px;
-}
-
-.welcome {
-    /* background-color: #f0f0f0; */
-    padding: 40px;
-    border-radius: 10px;
-
-}
-
-.featured {
-    margin-top: 40px;
-}
-
-.how-it-works {
-    margin-top: 40px;
-}
-
-.featured ul {
-    list-style: none;
-    padding: 0;
-}
-
-.featured ul li {
-    margin-bottom: 10px;
     padding: 10px;
-    /* background-color: #e9e9e9; */
-    border-radius: 5px;
+    width: inherit;
 }
 
-.how-it-works ol {
-    list-style: decimal;
-    padding-left: 20px;
+/* .welcome {
+    /* background-color: #f0f0f0; */
+    /* padding: 40px; */
+    /* border-radius: 10px; 
+
+} */
+
+.intro-container {
+    /* padding: 20px; */
+    /* text-align: center; */
+    font-weight: 600;
+    font-size: 1.125rem;
+    /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px) saturate(61%);
+    -webkit-backdrop-filter: blur(7px) saturate(61%);
+    background-color: rgba(40, 46, 56, 0.471);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125); */
+    color: #ffff;
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
 }
+
+.getbtn{   
+    width:120px;
+    height: 40px;
+    border: 1px solid #545454c3;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(to right, #11998e, #38ef7d); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11998e, #38ef7d);
+}
+.boxcontents{
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    
+}
+
 
 /* Footer Styles */
 footer {
-
-    color: #fff;
+    /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px) saturate(61%);
+    -webkit-backdrop-filter: blur(7px) saturate(61%);
+    background-color: rgba(40, 46, 56, 0.471); */
+    /* border-radius: 12px; */
+    /* border: 1px solid rgba(255, 255, 255, 0.125); */
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    /* border-radius: 12px; */
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    color: #ffff;
     padding: 20px;
     text-align: center;
 }
 
-.intro-container {
-    padding: 20px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.125rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
-}
 
-.modal-footer {
+
+/* .modal-footer {
     display: flex;
     justify-content: center;
     text-align: center;
 
-}
+} */
 
-.modal-footer a {
+/* .modal-footer a {
     text-decoration: underline;
-    color: blue;
+    color: green;
 
-}
+} */
 
 
 /* Social css */
@@ -214,17 +236,70 @@ ul {
 #modalSignin {
     width: 100%;
     height: 98vh;
-    background-color: #111111;
+    /* background-color: #111111;
     background-image: linear-gradient(32deg,
             rgba(8, 8, 8, 0.74) 30px,
-            transparent);
+            transparent); */
     background-size: 60px 60px;
     background-position: -5px -5px;
 }
+.signupbox{
+    backdrop-filter: blur(6px) saturate(67%) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(67%) !important;
+    background-color: rgba(17, 25, 40, 0.17) !important;
+    border: 1px solid rgba(255, 255, 255, 0.125) !important;
+}
+.signinp{
+    backdrop-filter: blur(6px) saturate(67%) !important;
+    -webkit-backdrop-filter: blur(6px) saturate(67%) !important;
+    background-color: rgba(17, 25, 40, 0.17) !important;
+    border: 1px solid rgba(255, 255, 255, 0.125) !important;
+    color: #ffff !important;
+    
+}
+
+
+.form-floating > input + label:after {   
+    background-color: transparent !important;
+    color: #ffff !important ;   
+}
+
+.form-floating::after{
+    background-color: transparent !important;
+    color: #ffff !important ;
+}
+
+.forminp{   
+    background-color: #8e8a8ae6 !important;
+    color: #ffffff !important ;   
+}
+.formlabel{
+    background-color: transparent !important;
+    color: #ffff !important ;  
+}
+
+.signbtn{
+    background: -webkit-linear-gradient(to right, #11998e, #38ef7d); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    color: #ffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.125) !important;
+}
+
+
 
 /* ------------ */
 
 
-#addUserContainer {
+/* #addUserContainer {
     padding: 20px;
+} */
+
+
+.userpage{
+    backdrop-filter: blur(6px) saturate(67%);
+    -webkit-backdrop-filter: blur(6px) saturate(67%);
+    background-color: rgba(17, 25, 40, 0.17);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    margin-top: 120px;
 }

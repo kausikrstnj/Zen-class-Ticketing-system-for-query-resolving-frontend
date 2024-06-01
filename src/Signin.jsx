@@ -13,11 +13,13 @@ function Signin() {
     });
 
     const clickSubmit = () => {
+        event.preventDefault();
+        console.log('clickSubmit-- ')
         const user = {
             email: values.email || undefined,
             password: values.password || undefined
         };
-
+        console.log(user)
         fetch('https://zenclass-ticketing-system-for-query.onrender.com/auth/signin', {
             method: 'POST',
             headers: {
@@ -49,29 +51,33 @@ function Signin() {
         setValues({ ...values, [name]: event.target.value });
     };
 
+
+
+
+
     return (
-        <div className="modal modal-sheet position-static d-block bg-body-white p-2 py-md-2" role="dialog" id="modalSignin">
+        <div className="modal modal-sheet position-static d-block p-2 py-md-2" role="dialog" id="modalSignin">
             <div className="modal-dialog" role="document">
-                <div className="modal-content rounded-4 shadow">
-                    <div className="modal-header p-4 pb-3 border-bottom-0">
+                <div className="modal-content rounded-3 shadow signupbox">
+                    <div className="modal-header p-4 pb-3 border-bottom-0 text-light">
                         <h1 className="fw-bold mb-0 fs-2">Sign in</h1>
                     </div>
 
                     <div className="modal-body p-4 pt-0">
-                        <form className="">
+                        <form>
 
                             <div className="form-floating mb-2">
-                                <input type="email" className="form-control" id="email" placeholder="Email" value={values.email} onChange={handleChange('email')} required />
+                                <input type="email" className="form-control" id="email" value={values.email} onChange={handleChange('email')} required />
                                 <label htmlFor="floatingInput">Email address</label>
                             </div>
                             <div className="form-floating mb-2">
-                                <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
+                                <input type="password" className="form-control" id="password" value={values.password} onChange={handleChange('password')} required />
                                 <label htmlFor="floatingPassword">Password</label>
                                 <br />
-                                <Link className="forgot-password-link link" to={`/forgotPassword`} >Forgot Password</Link>
+                                <Link className="forgot-password-link link text-light" to={`/forgotPassword`} >Forgot Password</Link>
                             </div>
                             <br />
-                            <Button variant="primary" onClick={clickSubmit}>Sign in</Button>
+                            <button className='btn btn-lg w-100 signbtn' onClick={clickSubmit}>Sign in</button>
                         </form>
                     </div>
                 </div>

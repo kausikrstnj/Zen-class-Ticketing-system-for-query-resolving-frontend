@@ -64,27 +64,27 @@ function Profile() {
                                 My Profile
                             </div>
                             <div className="line"></div>
-                            <form className="form">
-                                <div className="form-group">
-                                    <label htmlFor="name">Name</label>
-                                    <input readOnly name="name" id="name" value={user.name} />
+                            <form className="container">
+                                <div className="form-group  w-100">
+                                    <label htmlFor="name" className='form-label'>Name</label>
+                                    <input className='form-control' readOnly name="name" id="name" value={user.name} />
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input readOnly required name="email" id="email" value={user.email} />
+                                <div className="form-group  mt-3 w-100">
+                                    <label htmlFor="email" className='form-label'>Email</label>
+                                    <input className='form-control' readOnly required name="email" id="email" value={user.email} />
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="phn">Role</label>
-                                    <input readOnly required name="phn" id="phn" value={user.role} />
+                                <div className="form-group  mt-3 w-100">
+                                    <label htmlFor="phn" className='form-label'>Role</label>
+                                    <input className='form-control' readOnly required name="phn" id="phn" value={user.role} />
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="phn">Phone</label>
-                                    <input required readOnly name="phn" id="phn" value={user.phn} />
+                                <div className="form-group mt-3 w-100">
+                                    <label htmlFor="phn" className='form-label'>Phone</label>
+                                    <input className='form-control' required readOnly name="phn" id="phn" value={user.phn} />
                                 </div>
                                 {role === 'mentor' || role === 'student' ? (
                                     <>
-                                        <Link type="submit" className="form-submit-btn" to={`/user/edit/${userId}`}>Edit Account</Link>
-                                        <button type="submit" className="form-submit-btn" onClick={() => deleteAccount(user._id)}>Delete Account</button>
+                                        <Link type="submit" className="form-submit-btn text-decoration-none  mt-4" to={`/user/edit/${userId}`}>Edit Account</Link>
+                                        <button type="submit" className="form-submit-btn  mt-4" onClick={() => deleteAccount(user._id)}>Delete Account</button>
                                     </>
 
                                 ) : (
