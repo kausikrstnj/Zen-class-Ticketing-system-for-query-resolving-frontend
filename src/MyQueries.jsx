@@ -152,7 +152,6 @@ function MyQueries() {
                 console.log(data);
                 alert(data.message);
                 getQueries();
-                //  window.location.reload();
             })
             .catch(error => {
                 console.error('There was a problem closing query', error);
@@ -265,8 +264,8 @@ function MyQueries() {
                             <div className="loader_card__skeleton loader_card__description"></div>
                         </div>
                     ) : queries.length === 0 ? (
-                        <div className='card' id='myQueriesCard1'>
-                            <p className="text-body-secondary">No Queries to display.</p>
+                        <div className='card  text-white' id='myQueriesCard1'>
+                            <p className="">No Queries to display.</p>
                         </div>
                     ) : (
                         queries.map(query => (
