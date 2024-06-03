@@ -58,24 +58,6 @@ function MyQueries() {
         getQueries();
     }, []);
 
-    // const applyFilter = async (event) => {
-    //     setLoading(true);
-    //     try {
-    //         let filterInput = document.getElementById('filterInput').value;
-    //         console.log('filterInput- ', filterInput)
-    //         setQueries([]);
-    //         const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
-    //         const data = await response.json();
-    //         setQueries(data.queries.map((query, index) => ({ ...query, key: index })));
-    //         setLoading(false);
-    //         console.log('success ')
-    //     } catch (error) {
-    //         console.error('Error fetching queries:', error);
-    //         setError(error);
-    //         setLoading(false);
-    //     }
-    // };
-
     const handleFilterChange = (e) => {
         const input = e.target.value;
         setFilterInput(input);
