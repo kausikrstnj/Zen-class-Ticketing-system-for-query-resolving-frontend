@@ -129,7 +129,7 @@ function Home() {
 
 
         if (Object.keys(errors).length > 0) {
-            return alert('Please fill the required fields.');
+            return alert('Please fill all the required fields.');
         }
 
         const currentDate = new Date();
