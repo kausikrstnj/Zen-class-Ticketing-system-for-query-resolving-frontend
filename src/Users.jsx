@@ -74,7 +74,7 @@ function Users() {
                     <ul className="list-group mt-5" id='usersList'>
                         {users.map((item, i) => (
                             <Link to={`/user/${item._id}`} key={i} className="text-decoration-none">
-                                <li className="list-group-item d-flex align-items-center justify-content-between userlist text-white rounded">
+                                <li className="list-group-item d-flex align-items-center justify-content-between userlist text-white rounded" >
                                     <div className="d-flex align-items-center">
                                         <div className="avatar">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -88,7 +88,7 @@ function Users() {
                                         <i className="bi bi-arrow-right-circle"></i>
                                     </div>
                                 </li>
-                                <hr />
+                                <hr style={{ color: 'white' }} />
                             </Link>
                         ))}
                     </ul>

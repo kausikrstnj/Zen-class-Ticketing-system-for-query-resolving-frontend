@@ -17,10 +17,16 @@ function EditProfile() {
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phn');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
         if (!nameInput.value) errors.nameInput = "Name is required.";
-        if (!emailInput.value) errors.emailInput = "Email is required.";
-        if (!phoneInput.value) errors.phoneInput = "Phone is required.";
+        if (!emailInput.value) {
+            errors.emailInput = "Email is required.";
+        } else if (!emailRegex.test(emailInput.value)) {
+            errors.emailInput = "Invalid email format.";
+        }
+        if (phoneInput.value.length < 10) errors.phoneInput = "Invalid phone number.";
 
         console.log('errors.length:', errors.length);
 

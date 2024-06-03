@@ -164,11 +164,12 @@ body {
 }
 
 #viewqueryCard {
-
+    border-radius: 7px;
     overflow-y: scroll;
     background-color: transparent;
     color: white;
     height: 510px;
+    backdrop-filter: blur(6px) saturate(67%);
 }
 
 #ViewQueryParent {

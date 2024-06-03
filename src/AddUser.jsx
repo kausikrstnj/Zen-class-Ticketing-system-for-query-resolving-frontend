@@ -152,38 +152,38 @@ function AddUser() {
     };
 
     return (
-        <>
-            <div className="container w-50  userpage p-4" >
-                <div className='text-white'>
-                    <h2>Add User</h2>
-                    <p>User's default role will be 'Mentor'</p>
-                </div>
 
-                <form className="" ref={form} >
-                    <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="name" name='name' placeholder="Name" value={values.name} onChange={handleChange('name')} required />
-                        <label htmlFor="floatingInput">Username</label>
-                        {formErrors.nameInput && <div className="text-danger">{formErrors.nameInput}</div>}
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input type="tel" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
-                        <label htmlFor="floatingInput">Phone number</label>
-                        {formErrors.phoneInput && <div className="text-danger">{formErrors.phoneInput}</div>}
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input type="email" className="form-control" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
-                        <label htmlFor="floatingInput">Email address</label>
-                        {formErrors.emailInput && <div className="text-danger">{formErrors.emailInput}</div>}
-                    </div>
-                    <div className="form-floating mb-3">
-                        <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
-                        <label htmlFor="floatingPassword">Password</label>
-                        {formErrors.passwordInput && <div className="text-danger">{formErrors.passwordInput}</div>}
-                    </div>
-                    <button className="mt-2 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Add User</button>
-                </form>
+        <div className="container w-50  userpage p-4" >
+            <div className='text-white'>
+                <h2>Add User</h2>
+                <p>User's default role will be 'Mentor'</p>
             </div>
-        </>
+
+            <form className="" ref={form} >
+                <div className="form-floating mb-3">
+                    <input type="text" className="form-control" id="name" name='name' placeholder="Name" value={values.name} onChange={handleChange('name')} required />
+                    <label htmlFor="floatingInput">Username</label>
+                    {formErrors.nameInput && <div className="text-danger">{formErrors.nameInput}</div>}
+                </div>
+                <div className="form-floating mb-3">
+                    <input type="tel" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
+                    <label htmlFor="floatingInput">Phone number</label>
+                    {formErrors.phoneInput && <div className="text-danger">{formErrors.phoneInput}</div>}
+                </div>
+                <div className="form-floating mb-3">
+                    <input type="email" className="form-control" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
+                    <label htmlFor="floatingInput">Email address</label>
+                    {formErrors.emailInput && <div className="text-danger">{formErrors.emailInput}</div>}
+                </div>
+                <div className="form-floating mb-3">
+                    <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
+                    <label htmlFor="floatingPassword">Password</label>
+                    {formErrors.passwordInput && <div className="text-danger">{formErrors.passwordInput}</div>}
+                </div>
+                <button className="mt-2 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Add User</button>
+            </form>
+        </div>
+
 
 
     )

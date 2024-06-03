@@ -16,6 +16,7 @@ function Profile() {
     }, [userId]);
 
     const fetchUserData = async (userId) => {
+        event.preventDefault();
         try {
             const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/profile/${userId}`);
             const userData = await response.json();
