@@ -24,9 +24,9 @@ function Profile() {
             console.error('Error fetching user data:', error);
         }
     };
-    const deleteAccount = (userId) => {
-
-        fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/${userId}`, {
+    const deleteAccount = async (userId) => {
+        event.preventDefault();
+        await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/users/${userId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,6 @@ function Profile() {
                     } else {
                         navigate('/users');
                     }
-
                 }
             });
     };
@@ -53,7 +52,7 @@ function Profile() {
         <div className='container' id='myProfileContainer'>
             {userData.length === 0 ? (
                 <div id='myProfile'>
-                    <div class="spinner"></div>
+                    <div className="spinner"></div>
                 </div>
 
             ) : (

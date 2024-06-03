@@ -111,7 +111,6 @@ body {
 
 .navanchor {
     background-color: #753fd3 !important;
-
 }
 
 .userlist {
@@ -972,3 +971,5 @@ hr {
         content: "Loading...";
     }
 }
+
+/* Side bar css */
