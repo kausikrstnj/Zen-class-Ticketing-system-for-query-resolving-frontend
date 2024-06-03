@@ -53,22 +53,23 @@ function ForgotPassword() {
 
     return (
         <div className="container" id='forgot-password-container'>
-            <div className="form-container">
-                <div className="logo-container">
+            <div className="forgotPassContainer">
+                <div className="forgotPasslogo-container">
                     Forgot Password
                 </div>
 
-                <form className="form" ref={form}>
-                    <div className="form-group">
+                <form className="forgotPassform" ref={form}>
+                    <div className="forgotPassform-group">
                         <label htmlFor="email">Email</label>
                         <input type="text" id="email" name="email" placeholder="Enter your email" required="" />
                     </div>
 
-                    <button className="form-submit-btn" type="submit" onClick={() => sendEmail()}>Send Email</button>
+                    <button className="forgotPassform-submit-btn" type="submit" onClick={() => sendEmail()}>Send Email</button>
                 </form>
                 <br />
             </div>
         </div>
+
     )
 }
 

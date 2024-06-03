@@ -18,10 +18,6 @@ function EditProfile() {
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phn');
 
-        console.log('nameInput:', nameInput);
-        console.log('emailInput:', emailInput);
-        console.log('phoneInput:', phoneInput);
-
         if (!nameInput.value) errors.nameInput = "Name is required.";
         if (!emailInput.value) errors.emailInput = "Email is required.";
         if (!phoneInput.value) errors.phoneInput = "Phone is required.";
