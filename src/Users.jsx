@@ -6,6 +6,7 @@ function Users() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
+        event.preventDefault();
         const fetchUsers = async () => {
             try {
                 const response = await fetch('https://zenclass-ticketing-system-for-query.onrender.com/api/users', {
@@ -25,47 +26,25 @@ function Users() {
             }
         };
 
-        fetchUsers();
     }, []);
-
-    useEffect(() => {
-        if (!localStorage.getItem('jwt')) {
-            window.location.href = '/signin';
-        }
-    }, []);
-
-    const handleAddUserClick = () => {
-        const popupWindow = window.open('/addUser', 'Add User', 'width=600,height=400');
-        if (!popupWindow || popupWindow.closed || typeof popupWindow.closed === 'undefined') {
-            alert('Please allow pop-ups for this website to add a user.');
-        }
-    };
-
-    function openForm() {
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    function closeForm() {
-        document.getElementById("myForm").style.display = "none";
-    }
 
     return (
         <>
             {
                 users.length === 0 ? (
                     <div id='editProfile'>
-                        <div class="loader"></div>
+                        <div className="spinner"></div>
                     </div>
 
                 ) : (
                     <div className="container mt-5">
                         <div id='addUser'>
                             <div className='d-flex align-content-center'>
-                            <h6 className="text-white fs-4">All Users</h6>
+                                <h6 className="text-white fs-4">All Users</h6>
                             </div>
                             <Link type="button" className="btn btn-primary" to={`/addUser`}>+ Add User</Link>
                         </div>
-                        <ul className="list-group mt-5">
+                        <ul className="list-group mt-5" id='usersList'>
                             {users.map((item, i) => (
                                 <Link to={`/user/${item._id}`} key={i} className="text-decoration-none">
                                     <li className="list-group-item d-flex align-items-center justify-content-between userlist text-white rounded">

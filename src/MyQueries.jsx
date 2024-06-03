@@ -58,13 +58,12 @@ function MyQueries() {
     }, []);
 
     const applyFilter = async (event) => {
-        event.preventDefault();
         setLoading(true);
         try {
             let filterInput = document.getElementById('filterInput').value;
             console.log('filterInput- ', filterInput)
             setQueries([]);
-            const response = await fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
+            const response = await axios.get(`https://zenclass-ticketing-system-for-query.onrender.com/api/queries/${userId}/${role}/${filterInput}`);
             const data = await response.json();
             // setQueries(data.queries);
             setQueries(data.queries.map((query, index) => ({ ...query, key: index })));
@@ -205,8 +204,7 @@ function MyQueries() {
                             <li className='nav-items navcontents'>
                                 <Link to={`/queries/${userId}`} className="nav-link p-1 navanchor">
                                     <div className="text navtext">
-                                        all queries
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" className="bi bi-card-text" viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
                                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
                                             <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
                                         </svg>
@@ -218,7 +216,6 @@ function MyQueries() {
                             <li className="nav-item navcontents">
                                 <Link to={`/queries/${userId}`} className="nav-link p-1 navanchor">
                                     <div className="text navtext">
-                                        {/* My Queries */}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
                                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
                                             <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
@@ -343,25 +340,25 @@ function MyQueries() {
 
                 <div className="container text-center" id='myQueriesContainer2'>
                     {loading ? (
-                        <div className='card mt-3' id='myQueriesCard2'>
-                            <div id='loader' style={{ display: 'flex', justifyContent: 'center', alignSelf: 'center' }}>
-                                <div className="loader"></div>
-                            </div>
+                        <div className='card mt-3'
+                            id='myQueriesCard2'
+                            style={{ padding: '20px' }}>
+                            <div class="spinner"></div>
                         </div>
                     ) : recentQuery ? (
                         <div className='card mt-3 text-white' id='myQueriesCard2' style={{ padding: '20px' }}>
                             <div id='recentQuery'>
-                                <span>Recent Query</span>
+                                <span> <b>Recent Query</b> </span>
                             </div>
                             <div className='text-white' id='recentQueryHeader'>
-                                <span>QN{recentQuery.queryNumber} - {recentQuery.title}</span>
+                                <span> <b>QN{recentQuery.queryNumber}</b>  - {recentQuery.title}</span>
                                 <span id='status' style={getStatusStyle(recentQuery.status)}>{recentQuery.status}</span>
                             </div>
                             <hr />
                             <div className='row text-white'>
                                 <div className='text-white' id='detrow'>
-                                    <span id='createdAt'> Created at:</span>
-                                    <span id='createdAt'> Assigned to:</span>
+                                    <span id='createdAt'> <b>Created at:</b> </span>
+                                    <span id='createdAt'> <b>Assigned to:</b> </span>
                                 </div>
                                 <div className='text-white' id='detrow'>
                                     <span>{formatDate(recentQuery.created)}</span>
@@ -370,21 +367,22 @@ function MyQueries() {
                             </div>
                             <br />
                             <div className='text-white' id='desc'>
-                                <span className="text-body-secondary">Description:</span>
+                                <span id='createdAt'> <b>Description:</b> </span>
                             </div>
                             <div className='text-white' id='desc'>
                                 <span>{recentQuery.desc}</span>
                             </div>
                             <br />
                             <div className="attachment-container">
-                                <p className="text-body-secondary">Attachment:</p>
+                                <span id='createdAt'> <b>Attachment:</b> </span>
+
                                 <br />
                                 {recentQuery.attachment === '' ? (
                                     <>
                                     </>
                                 ) : (
                                     <div id='imagePreview' style={{ paddingLeft: '10px' }}>
-                                        <br />
+                                        {/* <br /> */}
                                         {recentQuery.attachment && (
                                             <img
                                                 src={recentQuery.attachment}
@@ -396,9 +394,9 @@ function MyQueries() {
                                     </div>
                                 )}
                             </div>
-                            <div id='goToQuery'>
+                            {/* <div id='goToQuery'>
                                 <Link to={`/query/${recentQuery._id}`} className="btn btn-primary">Go to query</Link>
-                            </div>
+                            </div> */}
                         </div>
                     ) : (
                         <div className='card mt-3' id='myQueriesCard2'>
