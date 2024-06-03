@@ -107,10 +107,32 @@ function Home() {
 
     const postQuery = async (e) => {
         event.preventDefault();
-
-        const currentDate = new Date();
+        const errors = {};
+        console.log('errors :', errors);
+        const category = document.getElementById('category').value;
+        const subcategory = document.getElementById('subcategorySelect').value;
+        const language = document.getElementById('language').value;
+        const queryTitle = document.getElementById('queryTitle').value;
+        const queryDesc = document.getElementById('queryDesc').value;
         const timeFrom = document.getElementById('avalFrom').value;
         const timeTo = document.getElementById('avalTo').value;
+
+
+        if (!category) errors.category = "Category is required.";
+        if (!subcategory) errors.subcategory = "Subcategory is required.";
+        if (!language) errors.language = "Preferred language is required.";
+        if (!queryTitle) errors.queryTitle = "Query title is required.";
+        if (!queryDesc) errors.queryDesc = "Query description is required.";
+        if (!timeFrom) errors.timeFrom = "Available time from is required.";
+        if (!timeTo) errors.timeTo = "Available time to is required.";
+        setFormErrors(errors);
+
+
+        if (Object.keys(errors).length > 0) {
+            return alert('Please fill the required fields.');
+        }
+
+        const currentDate = new Date();
         const [hoursFrom, minutesFrom] = timeFrom.split(':');
         const [hoursTo, minutesTo] = timeTo.split(':');
         currentDate.setHours(parseInt(hoursFrom, 10), parseInt(minutesFrom, 10), 0, 0);
