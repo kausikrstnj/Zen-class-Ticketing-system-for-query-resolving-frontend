@@ -7,6 +7,7 @@ function AddUser() {
     const form = useRef();
     const navigate = useNavigate();
     const location = useLocation();
+    const [formErrors, setFormErrors] = useState({});
     const [formValues, setFormValues] = useState({
         category: '',
         subcategory: '',
@@ -79,42 +80,49 @@ function AddUser() {
     };
 
     //To send email.
-    // const sendEmail = (e) => {
-    //     e.preventDefault();
-    //     // Check if there are any errors
-    //     emailjs
-    //         .sendForm('service_hhv6shd', 'template_0q6iyrd', form.current, {
-    //             publicKey: 'K8VsMKVO-imbFjfI6',
-    //         })
-    //         .then(
-    //             () => {
-    //                 console.log('SUCCESS!');
-    //             },
-    //             (error) => {
-    //                 console.log('FAILED...', error.text);
-    //             },
-    //         );
-    //     clickSubmit();
-    // };
-
     const sendEmail = (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            emailjs
-                .sendForm('service_hhv6shd', 'template_0q6iyrd', form.current, {
-                    publicKey: 'K8VsMKVO-imbFjfI6',
-                })
-                .then(
-                    () => {
-                        console.log('SUCCESS!');
-                    },
-                    (error) => {
-                        console.log('FAILED...', error.text);
-                    }
-                );
-            clickSubmit();
+        const errors = {};
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phn');
+        const passwordInput = document.getElementById('password');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!nameInput.value) errors.nameInput = "Name is required.";
+        if (!emailInput.value) {
+            errors.emailInput = "Email is required.";
+        } else if (!emailRegex.test(emailInput.value)) {
+            errors.emailInput = "Invalid email format.";
         }
+        if (!phoneInput.value) errors.phoneInput = "Phone is required.";
+        if (!passwordInput.value) {
+            errors.passwordInput = "Password is required.";
+        } else if (passwordInput.value.length < 6) {
+            errors.passwordInput = "Password must be at least 6 characters long.";
+        }
+
+        setFormErrors(errors);
+        if (Object.keys(errors).length > 0) {
+            return alert('Please fill all the required fields.');
+        }
+
+        emailjs
+            .sendForm('service_hhv6shd', 'template_0q6iyrd', form.current, {
+                publicKey: 'K8VsMKVO-imbFjfI6',
+            })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                },
+            );
+        clickSubmit();
     };
+
+
 
     const clickSubmit = () => {
         const user = {
@@ -148,29 +156,29 @@ function AddUser() {
             <div className="container w-50  userpage p-4" >
                 <div className='text-white'>
                     <h2>Add User</h2>
-                    <p>User's default role will be mentor</p>
+                    <p>User's default role will be 'Mentor'</p>
                 </div>
 
                 <form className="" ref={form} >
                     <div className="form-floating mb-3">
                         <input type="text" className="form-control" id="name" name='name' placeholder="Name" value={values.name} onChange={handleChange('name')} required />
                         <label htmlFor="floatingInput">Username</label>
-                        {errors.name && <div className="text-danger">{errors.name}</div>}
+                        {formErrors.nameInput && <div className="text-danger">{formErrors.nameInput}</div>}
                     </div>
                     <div className="form-floating mb-3">
                         <input type="tel" className="form-control" id="phn" name='phn' placeholder="Phone" value={values.phn} onChange={handleChange('phn')} required />
                         <label htmlFor="floatingInput">Phone number</label>
-                        {errors.phn && <div className="text-danger">{errors.phn}</div>}
+                        {formErrors.phoneInput && <div className="text-danger">{formErrors.phoneInput}</div>}
                     </div>
                     <div className="form-floating mb-3">
                         <input type="email" className="form-control" id="email" name='email' placeholder="Email" value={values.email} onChange={handleChange('email')} required />
                         <label htmlFor="floatingInput">Email address</label>
-                        {errors.email && <div className="text-danger">{errors.email}</div>}
+                        {formErrors.emailInput && <div className="text-danger">{formErrors.emailInput}</div>}
                     </div>
                     <div className="form-floating mb-3">
                         <input type="password" className="form-control" id="password" placeholder="Password" value={values.password} onChange={handleChange('password')} required />
                         <label htmlFor="floatingPassword">Password</label>
-                        {errors.password && <div className="text-danger">{errors.password}</div>}
+                        {formErrors.passwordInput && <div className="text-danger">{formErrors.passwordInput}</div>}
                     </div>
                     <button className="mt-2 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onClick={sendEmail}>Add User</button>
                 </form>
