@@ -66,15 +66,15 @@ function Assign() {
 
 
     return (
-        <div className='container'>
-            <h2>Mentor List</h2>
+        <div className='container' id='assignToMentor'>
+            <b id='mentorListHeader' >Mentor List</b>
             {mentor.length === 0 ? (
-                <div className='card' id='myQueriesCard1'>
-                    <p className="text-body-secondary">No mentors available.</p>
+                <div className='card' >
+                    <span id='Heading'>No mentors available.</span>
                 </div>
             ) : (
                 mentor.map(m => (
-                    <div key={m._id}>
+                    <div key={m._id} id='mentorList'>
                         <label htmlFor={`mentor_${m._id}`}>{m.name}</label>
                         <button id='assignMentor' value={m._id} className='btn btn-primary' onClick={AssignToMentor}> Assign</button>
                     </div>

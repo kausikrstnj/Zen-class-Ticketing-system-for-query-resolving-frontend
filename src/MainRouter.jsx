@@ -17,6 +17,7 @@ import ForgotPassword from "./ForgotPassword";
 import OTP from "./OTP";
 import ChangePassword from "./ChangePassword";
 import AssignedQueries from "./AssignedQueries";
+import Error from "./Error";
 import './Home.css'
 
 const MainRouter = () => {
@@ -25,6 +26,7 @@ const MainRouter = () => {
             <Menu />
 
             <Routes>
+                <Route exact path='/error' element={<Error />} />
                 <Route exact path='/' element={<Home />} />
                 <Route path='/users' element={<Users />} />
                 <Route path='/signup' element={<Signup />} />

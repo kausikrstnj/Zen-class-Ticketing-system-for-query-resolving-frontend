@@ -20,7 +20,6 @@ function EditProfile() {
             return;
         }
         document.getElementById('loader').style.display = 'block';
-        // Data to be sent in the request
         const data = {
             name: nameInput.value,
             email: emailInput.value,
@@ -34,7 +33,6 @@ function EditProfile() {
             body: JSON.stringify(data),
         }).then(response => response.json())
             .then(data => {
-                document.getElementById('loader').style.display = 'none';
                 if (data.error) {
                     console.log('Error editing account');
                 } else {

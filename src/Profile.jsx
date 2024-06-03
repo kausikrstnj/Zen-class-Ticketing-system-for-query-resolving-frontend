@@ -53,7 +53,7 @@ function Profile() {
         <div className='container' id='myProfileContainer'>
             {userData.length === 0 ? (
                 <div id='myProfile'>
-                    <div class="loader"></div>
+                    <div class="spinner"></div>
                 </div>
 
             ) : (

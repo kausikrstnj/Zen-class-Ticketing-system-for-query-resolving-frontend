@@ -19,6 +19,40 @@ function Home() {
     const [userMail, setUserMail] = useState('');
     const [queryNumber, setQueryNumber] = useState('');
     const [queryTitle, setQueryTitle] = useState('');
+    const [formErrors, setFormErrors] = useState({});
+
+
+    const validateForm = () => {
+        const errors = {};
+
+        if (!values.category) {
+            errors.category = 'Category is required';
+        }
+        if (!values.subcategory) {
+            errors.subcategory = 'Subcategory is required';
+        }
+        if (!values.language) {
+            errors.language = 'Language is required';
+        }
+        if (!values.queryTitle) {
+            errors.queryTitle = 'Query Title is required';
+        }
+        if (!values.queryDesc) {
+            errors.queryDesc = 'Query Description is required';
+        }
+        if (!values.timeFrom) {
+            errors.timeFrom = 'Available From time is required';
+        }
+        if (!values.timeTo) {
+            errors.timeTo = 'Available To time is required';
+        }
+        return errors;
+    };
+
+    const back = () => {
+        navigate('/');
+    }
+
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -46,13 +80,6 @@ function Home() {
         }
     }, [navigate]);
 
-    const createQuery = () => {
-        navigate('/CreateQuery');
-    }
-
-    const back = () => {
-        navigate('/');
-    }
 
     // to create Query
     const [values, setValues] = useState({
@@ -70,14 +97,24 @@ function Home() {
         updated: '',
     });
 
+    const handleChange = (field) => (event) => {
+        const { value } = event.target;
+        setValues({
+            ...values,
+            [field]: value,
+        });
+    };
+
     const postQuery = async (e) => {
         event.preventDefault();
+
         const currentDate = new Date();
         const timeFrom = document.getElementById('avalFrom').value;
         const timeTo = document.getElementById('avalTo').value;
         const [hoursFrom, minutesFrom] = timeFrom.split(':');
         const [hoursTo, minutesTo] = timeTo.split(':');
         currentDate.setHours(parseInt(hoursFrom, 10), parseInt(minutesFrom, 10), 0, 0);
+
         const query = {
             category: document.getElementById('category').value,
             subcategory: document.getElementById('subcategorySelect').value,
@@ -137,11 +174,13 @@ function Home() {
                         );
                     } catch (error) {
                         console.error('Error fetching queries:', error);
+                        navigate('/error', { state: { errorMessage: 'Failed to create query. Please try again later.' } });
                     }
                     setValues({ ...values, error: "", open: true })
                 }
             });
     };
+
     const updateSubcategoryOptions = () => {
         const selectedCategory = document.getElementById('category').value;
         let options;
@@ -274,6 +313,7 @@ function Home() {
                                     <option value="Coordination Related">Coordination Related</option>
                                     <option value="Pre-Bootcamp Related">Pre-Bootcamp Related</option>
                                 </select>
+                                {formErrors.category && <div className="text-danger">{formErrors.category}</div>}
 
                                 {!subcategoryOptions ? (
                                     <>
@@ -285,7 +325,10 @@ function Home() {
                                             {subcategoryOptions.map((option, index) => (
                                                 <option key={index} value={option}>{option}</option>
                                             ))}
-                                        </select> </>
+                                        </select>
+                                        {formErrors.subcategory && <div className="text-danger">{formErrors.subcategory}</div>}
+                                    </>
+
                                 )}
 
 
@@ -297,6 +340,8 @@ function Home() {
                                     <option value="hindi">Hindi</option>
 
                                 </select>
+                                {formErrors.language && <div className="text-danger">{formErrors.language}</div>}
+
                             </div>
                             <hr />
 
@@ -305,9 +350,11 @@ function Home() {
                             <div className="input-container">
                                 <p className="form-title-det" >Query Title</p>
                                 <input type="text" name='queryTitle' id='queryTitle' placeholder='Enter query title' required />
+                                {formErrors.queryTitle && <div className="text-danger">{formErrors.queryTitle}</div>}
+
                                 <p className="form-title-det" >Query Description</p>
                                 <input type="text" name='queryDesc' id='queryDesc' placeholder='Enter query description' required />
-
+                                {formErrors.queryDesc && <div className="text-danger">{formErrors.queryDesc}</div>}
                             </div>
                             <hr />
 
@@ -315,8 +362,12 @@ function Home() {
                             <div className="input-container">
                                 <p className="form-title-det" >From</p>
                                 <input type="time" max="19:00" name='avalFrom' id='avalFrom' required />
+                                {formErrors.timeFrom && <div className="text-danger">{formErrors.timeFrom}</div>}
+
                                 <p className="form-title-det" >To</p>
                                 <input type="time" max="19:00" name='avalTo' id='avalTo' required />
+                                {formErrors.timeTo && <div className="text-danger">{formErrors.timeTo}</div>}
+
 
                                 <input type="hidden" name='status' id='status' value="pending" />
                                 <input type="hidden" name='userId' id='userId' value={userId} />
