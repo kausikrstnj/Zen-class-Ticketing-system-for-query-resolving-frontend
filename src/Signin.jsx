@@ -14,12 +14,10 @@ function Signin() {
 
     const clickSubmit = () => {
         event.preventDefault();
-        console.log('clickSubmit-- ')
         const user = {
             email: values.email || undefined,
             password: values.password || undefined
         };
-        console.log(user)
         fetch('https://zenclass-ticketing-system-for-query.onrender.com/auth/signin', {
             method: 'POST',
             headers: {
@@ -34,7 +32,6 @@ function Signin() {
                 } else {
                     localStorage.setItem('jwt', JSON.stringify(data));
                     localStorage.setItem('userId', data.userId);
-
                     const jwtString = localStorage.getItem('jwt');
                     const jwt = JSON.parse(jwtString);
                     localStorage.setItem('role', jwt.role);

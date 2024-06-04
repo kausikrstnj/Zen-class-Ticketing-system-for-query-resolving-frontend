@@ -140,7 +140,6 @@ function MyQueries() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 alert(data.message);
                 getQueries();
             })

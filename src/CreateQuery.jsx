@@ -108,7 +108,6 @@ function Home() {
     const postQuery = async (e) => {
         event.preventDefault();
         const errors = {};
-        console.log('errors :', errors);
         const category = document.getElementById('category').value;
         const subcategory = document.getElementById('subcategorySelect').value;
         const language = document.getElementById('language').value;

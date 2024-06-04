@@ -26,7 +26,6 @@ function Assign() {
         try {
             const response = await axios.get('https://zenclass-ticketing-system-for-query.onrender.com/api/mentors');
             const data = response.data;
-            console.log('Mentors data:', data);
             setMentor(data.Mentors);
         } catch (error) {
             console.error('Error:', error);
@@ -37,8 +36,6 @@ function Assign() {
     //To assign mentor for a query
     const AssignToMentor = (event) => {
         const mentorId = event.target.value; // Extract the value from the button clicked
-        console.log('MentorId:', mentorId);
-
         fetch(`https://zenclass-ticketing-system-for-query.onrender.com/api/assignMentor/${mentorId}/${queryId}`, {
             method: 'PUT',
             headers: {
@@ -53,7 +50,6 @@ function Assign() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 alert(data.message);
                 navigate(`/queries/${userId}`);
             })

@@ -38,7 +38,6 @@ function Profile() {
                     console.log('Error deleting account');
                 } else {
                     alert('Account has been deleted!');
-
                     if (role === 'student' || role === 'mentor') {
                         localStorage.removeItem('jwt');
                         navigate('/signup');

@@ -18,8 +18,6 @@ function EditProfile() {
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phn');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
         if (!nameInput.value) errors.nameInput = "Name is required.";
         if (!emailInput.value) {
             errors.emailInput = "Email is required.";
@@ -27,11 +25,7 @@ function EditProfile() {
             errors.emailInput = "Invalid email format.";
         }
         if (phoneInput.value.length < 10) errors.phoneInput = "Invalid phone number.";
-
-        console.log('errors.length:', errors.length);
-
         setFormErrors(errors);
-
         if (Object.keys(errors).length > 0) {
             return alert('Please fill all the required fields.');
         }

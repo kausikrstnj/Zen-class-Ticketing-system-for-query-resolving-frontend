@@ -35,7 +35,6 @@ function ForgotPassword() {
                 publicKey: 'USN66qmbEOQ3Y9Yjl',
             }).then(
                 (response) => {
-                    console.log('Forgot pss/userId-- ', data.userId);
                     navigate(`/otp/${data.userId}`);
                     console.log('SUCCESS!', response.status, response.text);
                 },
